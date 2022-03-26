@@ -1,0 +1,56 @@
+Number
+n.toFixed(x) converte um n�mero para x casa decimal
+n.toLocaleString('pt-BR', {style: 'currency', currency:'BRL'}) coloca o n�mero em R$
+
+Operadores Aritm�ticos
+5 + 2 = 7
+5 - 2 = 3
+5 * 2 = 10
+5 / 2 = 2.5
+5 % 2 = 1, restante da divis�o
+5 ** 2 = 25, 5 ao quadrado
+
+Ordem de Preced�ncia dos operadores
+1. ( )
+2. **
+3. *, /, %
+4. +, -
+
+Ordem de Preced�ncia
+( ), **, *, / ...
+>, <, >= ...
+!
+&&
+
+Tern�rio
+teste ? true : false
+media >= 7 ? 'Aprovado' : 'Reprovado'
+
+DOM
+document.write('Escrevendo no DOM')
+
+Eventos
+mouseenter - Quando o mouse entra
+mouseout - Quando o mouse sai
+
+Condicionais
+switch(expressao) {
+    case valor 1:
+        'bloco'
+        break
+    case valor 2:
+        'bloco'
+        break
+    default:
+        'bloco'
+        break
+}
+
+Repetições
+while(condição) {
+    bloco
+}
+
+do {
+    bloco
+} while(condição)

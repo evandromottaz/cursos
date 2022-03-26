@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: rgb(136, 132, 132);
+                color: white;
+                font:20px Arial normal
+            }
+        </style>
+    </head>
+    <body>
+    <h1>Iniciando estudos DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo a usar o <strong>DOM</strong> em JavaScript.</p>
+    <div id="msg">Clique em min</div>
+    
+    <script>
+        let corpo = document.body
+        let p1 = window.document.getElementsByTagName('p')[1]
+        
+        corpo.style.background = 'brown'
+        p1.style.color = 'blue'
+        document.write(p1.innerText)
+        
+        let msg = document.getElementById('msg')
+        msg.style.background = 'green'
+        msg.innerText = 'To programando bixo!'
+    </script>
+    </body>
+</html>

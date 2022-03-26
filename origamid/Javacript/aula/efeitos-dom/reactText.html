@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Projetinho top</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="controles">
+      <label>Texto para formatar</label>
+      <textarea id="display" cols="100" rows="15"></textarea>
+      <div class="buttons">
+        <button id="bold">Normal</button>
+        <button style="background-color: #639;color: #ffffff;" id="clube">Clube</button>
+        <button style="background-color: #ff7020;" id="geral">Geral</button>
+        <button id="datas">Datas</button>
+      </div>
+    </section>
+
+    <script>
+      function editDisplay() {
+        const display = document.querySelector('#display')
+        const buttons = document.querySelectorAll('button')
+
+        const styles = {
+          display:display,
+          bold(){
+            console.log(this.display.value.substring(0, this.display.selectionStart) 
+            + this.display.value)
+          },
+          clube(){
+            console.log(this.display)
+          },
+          geral(){
+            console.log(this.display)
+          },
+          datas(){
+            console.log(this.display)
+          }
+        }
+
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            const innerText = event.target.innerText
+            const id = event.target.id
+
+            styles[id](innerText)
+          })
+        })
+
+        // Stackoverflow
+        // document.querySelector("button").onclick = function() {
+        // var ta = document.querySelector("textarea");
+        // ta.value = ta.value.substring(0, ta.selectionStart) +
+        // "tchau" +
+        // ta.value.substring(ta.selectionEnd);
+        // }
+      }
+      editDisplay()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <style>.mod072{font-family:"Nunito","nunitolight","nunito-light","arial";color:#7c7c7c;margin:20px 0}.mod072 div.container{display:flex;flex-direction:column;width:100%}.mod072 div.container div.titulo{display:flex;flex-direction:row;color:#fff;background:#ff7020;padding:10px 20px}.mod072 div.container div.titulo div.titulo-esquerda{flex:1;margin:auto;font-size:1.2rem;word-break:break-word;font-weight:700;margin-right:10px}@media screen and (max-width:730px){.mod072 div.container div.titulo div.titulo-esquerda{font-size:1rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:400px){.mod072 div.container div.titulo div.titulo-esquerda{font-size:.8rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.titulo div.titulo-linha{background:#e6e6e6;flex:1;height:1px;width:100%;margin:auto;background-image:linear-gradient(left,#ff7020,white 98%);background-image:-o-linear-gradient(left,#ff7020,white 98%);background-image:-moz-linear-gradient(left,#ff7020,white 98%);background-image:-webkit-linear-gradient(left,#ff7020,white 98%);background-image:-ms-linear-gradient(left,#ff7020,white 98%)}.mod072 div.container div.titulo div.titulo-img-aviao{margin-left:5px}.mod072 div.container div.titulo div.titulo-img-aviao svg{width:35px;height:100%}.mod072 div.container div.titulo div.titulo-img-aviao svg path{fill:#fff}.mod072 div.container div.img{position:relative}.mod072 div.container div.img picture img{width:100%;height:auto}.mod072 div.container div.img picture:last-child{position:absolute;top:10px;right:20px;filter:drop-shadow(1px 0 #000)}@media screen and (max-width:800px){.mod072 div.container div.img picture:last-child{right:auto;left:0}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.img picture:last-child img{width:auto;height:auto}@media screen and (max-width:800px){.mod072 div.container div.img picture:last-child img{width:60%}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.container{display:flex;flex-direction:column}.mod072 div.container div.menus-dropdown{display:flex;position:relative}@media screen and (max-width:500px){.mod072 div.container div.menus-dropdown{font-size:.8rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:375px){.mod072 div.container div.menus-dropdown{font-size:.6rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.menus-dropdown div{z-index:999;background:#fff;margin:5px}.mod072 div.container div.menus-dropdown div.no-menu{display:none}.mod072 div.container div.menus-dropdown div.origem-dropdown{top:-15px;position:absolute;left:15px;color:red;filter:drop-shadow(0 0 2px #000)}.mod072 div.container div.menus-dropdown div.origem-dropdown div{padding:3px}.mod072 div.container div.menus-dropdown div.origem-dropdown div:hover{background:rgba(0,0,0,.1);cursor:pointer}.mod072 div.container div.menus-dropdown div.destino-dropdown{top:-15px;position:absolute;color:#ff7020;left:70px;filter:drop-shadow(0 0 2px #000)}.mod072 div.container div.menus-dropdown div.destino-dropdown div{padding:3px}.mod072 div.container div.menus-dropdown div.destino-dropdown div:hover{background:rgba(0,0,0,.1);cursor:pointer}.mod072 div.container div.menu{display:grid;grid-template-columns:.5fr .1fr 1fr 1fr 1fr 1fr 1fr;flex-direction:row;color:#fff;background:#d35400;padding:10px 20px;margin-top:-5px;font-size:.8rem;font-weight:700;align-items:center;flex-wrap:wrap;grid-auto-flow:column;position:relative}@media screen and (max-width:1200px){.mod072 div.container div.menu{grid-template-columns:.5fr .1fr 1fr 1fr 1fr}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:676px){.mod072 div.container div.menu{font-size:.7rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:375px){.mod072 div.container div.menu{font-size:.6rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.menu div{margin-right:10px;text-align:left;word-wrap:break-word}.mod072 div.container div.menu div#origem{cursor:pointer;user-select:none}.mod072 div.container div.menu div#origem span{position:absolute;transform:rotate(90deg);margin-left:2px}.mod072 div.container div.menu div#destino{cursor:pointer;user-select:none}.mod072 div.container div.menu div#destino span{position:absolute;transform:rotate(90deg);margin-left:2px}@media screen and (max-width:1200px){.mod072 div.container div.menu div{margin-right:5px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.menu div.menu-aviao{flex:0;min-width:35px;margin-right:15px}@media screen and (max-width:350px){.mod072 div.container div.menu div.menu-aviao{margin-right:0}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:320px){.mod072 div.container div.menu div.menu-aviao{margin-right:15px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.menu div:last-child{margin-right:0}@media screen and (max-width:1200px){.mod072 div.container div.menu div:nth-child(5){margin-right:0}.mod072 div.container div.menu div:nth-child(6){display:none}.mod072 div.container div.menu div:nth-child(7){display:none}.mod072 div.container div.menu div:nth-child(8){display:none}.mod072 div.container div.menu div:nth-child(9){display:none}}.mod072 div.container div.ofertas{position:relative;max-height:450px;display:flex;flex-direction:column;overflow-y:scroll;overflow-x:hidden}.mod072 div.container div.ofertas::-webkit-scrollbar{width:5px}.mod072 div.container div.ofertas::-webkit-scrollbar-track{background:#f1f1f1}.mod072 div.container div.ofertas::-webkit-scrollbar-thumb{background:#ff7020}@media screen and (max-width:1200px){.mod072 div.container div.ofertas{overflow-y:unset!important;overflow-x:unset;height:auto}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:1200px){.mod072 div.container div.ofertas{border:1px solid #c7c7c7;border-bottom-left-radius:10px;border-bottom-right-radius:10px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item{flex-wrap:wrap;margin:0 20px;font-size:.9rem;margin-top:20px;align-items:center;grid-template-columns:.5fr .1fr 1fr 1fr 1fr 1fr 1fr;display:grid;border-bottom:1px solid #c7c7c7;padding-bottom:20px;line-height:normal}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item{grid-template-columns:.5fr .1fr 1fr 1fr 1fr;border-bottom:none;display:none}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:676px){.mod072 div.container div.ofertas div.item{font-size:.6rem;margin-top:20px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:350px){.mod072 div.container div.ofertas div.item{font-size:.5rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item div{margin-right:5px}.mod072 div.container div.ofertas div.item div.ida span,.mod072 div.container div.ofertas div.item div.volta span{font-size:.7rem}@media screen and (max-width:676px){.mod072 div.container div.ofertas div.item div.ida span,.mod072 div.container div.ofertas div.item div.volta span{font-size:.6rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:350px){.mod072 div.container div.ofertas div.item div.ida span,.mod072 div.container div.ofertas div.item div.volta span{font-size:.4rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item div.volta{border-right:1px solid #c7c7c7;margin-right:45px;height:32px;display:flex;flex-direction:column}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item div.volta{border:none;margin-right:5px;display:block;height:auto}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item div.aviao{flex:0;min-width:35px;margin-right:15px}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item div.aviao{margin-right:20px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:350px){.mod072 div.container div.ofertas div.item div.aviao{margin-right:0}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:320px){.mod072 div.container div.ofertas div.item div.aviao{margin-right:15px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item div.aviao picture img{width:80%}.mod072 div.container div.ofertas div.item div.origem,.mod072 div.container div.ofertas div.item div.destino{font-weight:700}.mod072 div.container div.ofertas div.item div.destino{border-right:1px solid #c7c7c7;margin-right:15px;height:32px;place-items:center;display:flex}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item div.destino{border:none;margin-right:5px;display:block;height:auto}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item div.cia{padding-left:25px;border-left:1px solid #c7c7c7}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item div.cia{padding:0;border:none}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item div.cia picture img{width:100%;display:block}.mod072 div.container div.ofertas div.item div.botao{display:flex;justify-content:center;margin-right:-5px;cursor:pointer;user-select:none}.mod072 div.container div.ofertas div.item div.botao a.btn-class{background:#ff7020;padding:10px;text-decoration:none;color:#fff;border-radius:5px;opacity:1;transition:1s ease-in-out}.mod072 div.container div.ofertas div.item div.botao a.btn-class:hover{opacity:70%;transition:1s ease-in-out}.mod072 div.container div.ofertas div.item div.clube div.clube-container{display:flex;flex-wrap:wrap;flex-direction:column}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.a-partir{font-size:.8rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.milhas{display:flex;flex-direction:row}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.milhas div.valores{font-size:1.6rem;font-weight:700;color:#639}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.milhas div.texto-milhas{font-size:.5rem;line-height:normal}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.milhas div.texto-milhas span.milhas-min-clube{color:#639;font-weight:700}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container{display:flex;flex-wrap:wrap;flex-direction:column}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.a-partir{font-size:.8rem}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.milhas{display:flex;flex-direction:row}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.milhas div.valores{font-size:1.6rem;font-weight:700;color:#ff7020}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.milhas div.texto-milhas{font-size:.5rem;line-height:normal}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.milhas div.texto-milhas span.milhas-min-cliente{color:#ff7020;font-weight:700}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item{display:none}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item.active{display:grid}.mod072 div.container div.ofertas div.item.active div:nth-child(6){display:none}.mod072 div.container div.ofertas div.item.active div:nth-child(7){display:none}.mod072 div.container div.ofertas div.item.active div:nth-child(8){display:none}.mod072 div.container div.ofertas div.item.active div:nth-child(9){display:none}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile{margin:10px 20px;font-size:.8rem;word-break:break-word;display:grid;grid-template-columns:1fr;display:none}@media screen and (max-width:676px){.mod072 div.container div.ofertas div.item-mobile{margin:0;margin-top:20px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item-mobile.active{display:grid}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.origem,.mod072 div.container div.ofertas div.item-mobile div.destino{display:none}.mod072 div.container div.ofertas div.item-mobile div.valor-clube{display:grid;grid-template-columns:1fr 1fr;flex-direction:row;flex-wrap:wrap;font-size:.6rem}.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube1{flex:1;font-weight:700;color:#639;font-size:1.2rem;margin:0 5px;min-width:max-content}@media screen and (max-width:595px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube1{font-size:.8rem!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:409px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube1{font-size:.5rem!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2{flex:1;display:flex;flex-direction:row;flex-wrap:wrap;font-size:.8rem;line-height:normal}.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.de-a-partir{margin-right:5px}@media screen and (max-width:399px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.de-a-partir{font-size:.6rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:360px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.de-a-partir{font-size:.4rem;margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.valor{font-weight:700;color:#639;font-size:1.5rem;margin-right:5px}@media screen and (max-width:360px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.valor{margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.texto-milhas{line-height:normal}.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.texto-milhas span.milhas-min-clube2{font-weight:700;color:#639}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.texto-milhas{font-size:.4rem;margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:409px){.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.texto-milhas{font-size:.5rem!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-geral{display:grid;grid-template-columns:1fr 1fr;flex-direction:row;flex-wrap:wrap;font-size:.6rem;margin-top:20px}.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral1{flex:1;font-weight:700;color:#ff7020;font-size:1.2rem;margin-right:5px;min-width:max-content;margin:0 5px}@media screen and (max-width:595px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral1{font-size:.8rem!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:409px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral1{font-size:.5rem!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2{flex:1;display:flex;flex-direction:row;flex-wrap:wrap;font-size:.8rem;line-height:normal}.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.de-a-partir{margin-right:5px}@media screen and (max-width:399px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.de-a-partir{font-size:.6rem}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:360px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.de-a-partir{font-size:.4rem;margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.valor{font-weight:700;color:#ff7020;font-size:1.5rem;margin-right:5px}@media screen and (max-width:360px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.valor{margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.texto-milhas{line-height:normal}.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.texto-milhas span.milhas-min-geral2{font-weight:700;color:#ff7020}@media screen and (max-width:1200px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.texto-milhas{font-size:.4rem;margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:409px){.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.texto-milhas{font-size:.5rem!important}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.logo-botao{margin:10px 0 10px;display:grid;grid-template-columns:1fr 1fr}.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.logo{margin-left:4px}.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.logo picture img{max-width:145px}.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.botao-mobile{display:flex;margin-left:5px;cursor:pointer;user-select:none}@media screen and (max-width:409px){.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.botao-mobile{margin-right:1px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}@media screen and (max-width:450px){.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.botao-mobile{justify-content:flex-end;margin-right:15px}.mod072 div.container div.ofertas div.item div.clube div.clube-container div.de{display:none!important}.mod072 div.container div.ofertas div.item div.cliente div.cliente-container div.de{display:none!important}}.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.botao-mobile a.btn-class-mobile{background:#ff7020;padding:10px;text-decoration:none;border-radius:5px;color:#fff;display:flex;align-self:center;opacity:1;transition:1s ease-in-out}.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.botao-mobile a.btn-class-mobile:hover{opacity:70%;transition:1s ease-in-out}@media screen and (max-width:450px){.mod072 div.container div.ofertas div.item-mobile div.logo-botao div.botao-mobile a.btn-class-mobile{padding:8px;font-size:.7rem;border-radius:3px}}.mod072 div.mod072-tj{font-size:.6rem;font-weight:700;margin-top:5px}.mod072 div.btn-slide{margin-top:10px;width:100%;display:none;user-select:none;bottom:-35px}@media screen and (max-width:1200px){.mod072 div.btn-slide{display:flex;justify-content:center}}.mod072 div.btn-slide a{cursor:pointer}.mod072 div.btn-slide a.avancar{position:absolute;background:#ff7020;padding:7px;color:#fff;font-weight:700;left:60%}.mod072 div.btn-slide a.voltar{position:absolute;background:#ff7020;padding:7px;color:#fff;font-weight:700;right:60%}
+
+.mod072 div.container div.menu div#origem span { margin-left: 1px;}
+@media screen and (max-width: 1200px){.mod072 div.container div.menu {display: flex;justify-content: space-between;} .mod072 div.container div.menu :nth-child(n + 3){display: none;}}
+.mod072 div.container div.ofertas div.item-mobile div.valor-clube { align-items: center;}
+.mod072 div.container div.ofertas div.item-mobile div.valor-geral {align-items: center;}
+.mod072 div.container div.ofertas div.item-mobile div.valor-geral div.geral2 div.de-a-partir {display: flex;align-items: center;}
+.mod072 div.container div.ofertas div.item-mobile div.valor-clube div.clube2 div.de-a-partir {display: flex;align-items: center;}
+
+
+</style>
+
+
+#set ($item = $main.Itens.getSiblings())
+
+
+
+<div class="mod072">
+  <div class="container">
+    <div class="titulo">
+      <div class="titulo-esquerda">$main.Titulo.getData()</div>
+      <div class="titulo-linha"></div>
+      <div class="titulo-img-aviao"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1" id="Layer_1" x="0px" y="0px" width="27.25px" height="21.368px" viewBox="0 0 27.25 21.368"
+          enable-background="new 0 0 27.25 21.368" xml:space="preserve"
+          class="icon-smiles-branco svg no-margin-left replaced-svg">
+          <path
+            d="M12.805,13.944l1.218-1.997l5.889-0.117c0,0,0.704-0.117,1.057-0.294c0.352-0.176,0.91-0.646,0.91-0.852  c0-0.206-0.559-0.676-0.91-0.852c-0.353-0.176-1.057-0.293-1.057-0.293l-5.889-0.117l-1.218-1.997l-0.528-0.881l-3.67-6.02  l0.265-0.206H7.548l2.676,9.044c0,0-1.53,0.029-3.028,0.059c-1.498,0.029-3.26,0.382-3.26,0.382L2.058,7.13l0.235-0.176H1  l0.94,3.289C1.353,10.449,1,10.684,1,10.684s0.353,0.234,0.94,0.44L1,14.413h1.292l-0.235-0.175l1.879-2.673  c0,0,1.762,0.353,3.26,0.382s3.028,0.059,3.028,0.059l-2.676,9.044h1.322l-0.265-0.205l3.67-6.02L12.805,13.944z">
+          </path>
+        </svg></div>
+    </div>
+    #if($main.Possui_img_.getData() == true)
+    <div class="img">
+      <picture>
+        <source data-srcset="$main.Imagem_Mobile.getData()" media="(max-width: 575px)">
+        <img class="lazyload" data-src="$main.Imagem_Desk.getData()" alt="alt">
+      </picture>
+      #if($main.Logo_na_img_.getData() == true)
+      <picture>
+        <img class="lazyload" data-src="$main.icone_cia_aerea_img.getData()" alt="logo cia aerea">
+      </picture>
+      #end
+    </div>
+    #end
+    <div class="container">
+      <div class="menu">
+        <div id="origem">ORIGEM <span>></span> </div>
+        <div class="menu-aviao"></div>
+        <div id="destino">DESTINO <span>></span></div>
+        #if($main.Possui_clube_.getData() == true)
+        <div>CLUBE SMILES OU DIAMANTE</div>
+        #end
+        #if($main.Possui_geral_cliente_smiles_.getData() == true)
+        <div>CLIENTE SMILES</div>
+        #end
+        #if($main.Possui_lista_cia_aerea_.getData() == true)
+        <div>COMPANHIA AÉREA</div>
+        #end
+        <div></div>
+      </div>
+      <div class="menus-dropdown">
+        <div class="origem-dropdown no-menu">
+          <div class="limpar-filtro" style="filter: drop-shadow(0 0 2px #000)">Limpar Filtro</div>
+          #foreach($itens in $item)
+          <div>$itens.Origem.getData()</div>
+          #end
+        </div>
+        <div class="destino-dropdown no-menu">
+          <!--<div class="limpar-filtro" style="filter: drop-shadow(0 0 2px #000)">Limpar Filtro</div>-->
+          #foreach($itens in $item)
+          <div>$itens.Destino.getData()</div>
+          #end
+        </div>
+      </div>
+      <div class="ofertas">
+
+        #foreach($itens in $item)
+        <div class="item">
+          <div class="origem">$itens.Origem.getData()</div>
+          <div class="aviao">
+            <picture><img class="lazyload"
+                data-src="https://smiles-mkt.s3.amazonaws.com/ricardo/mod070/aviao%20cinxa.png" alt="aviao"></picture>
+          </div>
+          <div class="destino">$itens.Destino.getData()</div>
+          #if($main.Possui_clube_.getData() == true)
+          <div class="clube">
+            <div class="clube-container">
+              <div class="de">De: <s>$itens.Clube_de_.getData()</s> milhas</div>
+              <div class="a-partir">A partir de:</div>
+              <div class="milhas">
+                <div class="valores">$itens.Clube_valor.getData()</div>
+                <div class="texto-milhas"><span class="milhas-min-clube">milhas</span><br />o
+                  trecho<br />+ taxas*</div>
+              </div>
+            </div>
+          </div>
+          #end
+          #if($main.Possui_geral_cliente_smiles_.getData() == true)
+          <div class="cliente">
+            <div class="cliente-container">
+              <div class="de">De: <s>$itens.Geral_de.getData()</s> milhas</div>
+              <div class="a-partir">A partir de:</div>
+              <div class="milhas">
+                <div class="valores">$itens.Geral_valor.getData()</div>
+                <div class="texto-milhas"><span class="milhas-min-cliente">milhas</span><br />o
+                  trecho<br />+ taxas*</div>
+              </div>
+            </div>
+          </div>
+          #end
+          #if($main.Possui_lista_cia_aerea_.getData() == true)
+          <div class="cia">
+            <picture>
+              <img class="lazyload" data-src="$itens.icone_companhias_aereas.getData()" alt="cia aerea">
+            </picture>
+          </div>
+          #end
+          #if($itens.Texto_Botao.getData() != "")
+          <div class="botao">
+            <a class="btn-class" onclick="window.open('$itens.Link_botao.getData()')">$itens.Texto_Botao.getData()</a>
+          </div>
+          #end
+        </div>
+        <!--VALORES MOBILE-->
+        <div class="item-mobile">
+          <div class="origem">$itens.Origem.getData()</div>
+          <div class="destino">$itens.Destino.getData()</div>
+          #if($main.Possui_clube_.getData() == true)
+          <div class="valor-clube">
+            <div class="clube1">CLUBE SMILES OU DIAMANTE</div>
+            <div class="clube2">
+              <div class="de-a-partir"> #if($itens.Clube_de_.getData() != '')<s>$itens.Clube_de_.getData()</s> <br />#end A partir de: </div>
+              <div class="valor">$itens.Clube_valor.getData()</div>
+              <div class="texto-milhas"><span class="milhas-min-clube2">milhas</span><br />o
+                trecho<br />+ taxas*</div>
+            </div>
+          </div>
+          #end
+          #if($main.Possui_geral_cliente_smiles_.getData() == true)
+          <div class="valor-geral">
+            <div class="geral1">CLIENTE SMILES</div>
+            <div class="geral2">
+              <div class="de-a-partir">#if($itens.Geral_de.getData() != '')<s>$itens.Geral_de.getData()</s> <br/>#end A partir de: </div>
+              <div class="valor">$itens.Geral_valor.getData()</div>
+              <div class="texto-milhas"><span class="milhas-min-geral2">milhas</span><br />o
+                trecho<br />+ taxas*</div>
+            </div>
+          </div>
+          #end
+          <div class="logo-botao">
+            #if($main.Logo_na_lista_mobile_.getData() == true)
+            <div class="logo">
+              <picture>
+                <img class="lazyload" data-src="$itens.icone_companhias_aereas.getData()" alt="cia aerea">
+              </picture>
+            </div>
+            #end
+            #if($itens.Texto_Botao.getData() != "")
+            <div class="botao-mobile">
+              <a class="btn-class-mobile"
+                onclick="window.open('$itens.Link_botao.getData()')">$itens.Texto_Botao.getData()</a>
+            </div>
+            #end
+          </div>
+        </div>
+
+        <!--FIM VALORES MOBILE-->
+        #end
+
+
+      </div>
+    </div>
+
+  </div>
+  <div class="mod072-tj">$main.TJ.getData()</div>
+  <div class="btn-slide">
+    <a class="voltar" onclick="voltar()"> <<span>
+      </span> </a> <a class="avancar" onclick="avancar()">></a>
+  </div>
+</div>
+
+
+
+
+<script>
+  var valoresMod072 = 0;
+  document.querySelectorAll('.mod072 .ofertas .item')[0].classList.add('active');
+  document.querySelectorAll('.mod072 .ofertas .item-mobile')[0].classList.add('active');
+
+  if (document.querySelectorAll('.mod072 .item').length <= 4) {
+    document.querySelector('.mod072 .ofertas').style.overflowY = "hidden";
+  }
+
+  function avancar() {
+
+    document.querySelectorAll('.mod072 .ofertas .item')[valoresMod072].classList.remove('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[valoresMod072].classList.remove('active');
+    valoresMod072 = (valoresMod072 + 1) % document.querySelectorAll('.mod072 .ofertas .item').length;
+    document.querySelectorAll('.mod072 .ofertas .item')[valoresMod072].classList.add('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[valoresMod072].classList.add('active');
+
+
+  }
+
+  function voltar() {
+
+    document.querySelectorAll('.mod072 .ofertas .item')[valoresMod072].classList.remove('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[valoresMod072].classList.remove('active');
+    valoresMod072 = (valoresMod072 - 1 + document.querySelectorAll('.mod072 .ofertas .item').length) % document
+      .querySelectorAll('.mod072 .ofertas .item').length;
+    document.querySelectorAll('.mod072 .ofertas .item')[valoresMod072].classList.add('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[valoresMod072].classList.add('active');
+
+  }
+  if (document.querySelectorAll('.mod072 .item').length <= 4) {
+    document.querySelector('.mod072 .ofertas').style.overflowY = "hidden"
+  }
+
+
+  function mostrarOrigem(e) {
+    e.preventDefault();
+    document.querySelector('.origem-dropdown').classList.toggle('no-menu');
+  }
+
+  function mostrarDestino(e) {
+    e.preventDefault();
+    document.querySelector('.destino-dropdown').classList.toggle('no-menu');
+  }
+
+  function tirarMenu() {
+    document.querySelector('.destino-dropdown').classList.add('no-menu')
+  }
+
+  function tirarMenu2() {
+    document.querySelector('.origem-dropdown').classList.add('no-menu')
+  }
+
+  document.querySelector('#destino').addEventListener('click', mostrarDestino);
+  document.querySelector('#origem').addEventListener('click', mostrarOrigem);
+  document.querySelector('.destino-dropdown').addEventListener('mouseleave', tirarMenu)
+  document.querySelector('.origem-dropdown').addEventListener('mouseleave', tirarMenu2)
+  document.querySelector('.destino-dropdown').addEventListener('click', tirarMenu)
+  document.querySelector('.origem-dropdown').addEventListener('click', tirarMenu2)
+
+  //filtro
+
+  // document.querySelector('.ofertas').style.display = "none";
+
+  const origemArr = Array.from(document.querySelectorAll('.origem-dropdown div'));
+  const filtrarOrigens = origemArr.map(item => item.outerHTML);
+  const limparOrigens = filtrarOrigens.filter((item, i) => filtrarOrigens.indexOf(item) === i);
+  document.querySelector('.origem-dropdown').innerHTML = limparOrigens.map(item => item).join('');
+
+  const destinoArr = Array.from(document.querySelectorAll('.destino-dropdown div'));
+  const filtrarDestinos = destinoArr.map(item => item.outerHTML);
+  const limparDestinos = filtrarDestinos.filter((item, i) => filtrarDestinos.indexOf(item) === i);
+  document.querySelector('.destino-dropdown').innerHTML = limparDestinos.map(item => item).join('');
+
+  const origemDrop = document.querySelector('.origem-dropdown');
+  const destinoDrop = document.querySelector('.destino-dropdown');
+  let ar = [].slice.call(document.querySelector('.ofertas').children);
+  let lista = [];
+  let listaDestino = [];
+  let limparRepetidos = [];
+  let limparRepetidosDestino = [];
+  let maperResults = [];
+  let limp = [];
+  let duplicados = [];
+  let duplicadosSomados = [];
+
+  function listar() {
+    if (document.querySelectorAll('.mod072 .item').length >= 4) {
+      document.querySelector('.mod072 .ofertas').style.overflowY = "scroll"
+    }
+
+    limparRepetidos = lista.filter((item, i) => lista.indexOf(item) === i);
+
+    document.querySelector('.ofertas').prepend(...limparRepetidos);
+
+    document.querySelector('.ofertas').innerHTML = limparRepetidos.map(item => item.outerHTML).join('');
+    document.querySelector('.ofertas').append(...limparRepetidosDestino);
+
+    maperResults.unshift(...limparRepetidos);
+
+    document.querySelectorAll('.mod072 .ofertas .item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item-mobile').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item')[0].classList.add('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[0].classList.add('active');
+
+  }
+
+  function listarDestino() {
+    if (document.querySelectorAll('.mod072 .item').length >= 4) {
+      document.querySelector('.mod072 .ofertas').style.overflowY = "scroll"
+    }
+    limparRepetidosDestino = listaDestino.filter((item, i) => listaDestino.indexOf(item) === i);
+
+    document.querySelector('.ofertas').append(...limparRepetidosDestino);
+    maperResults.push(...limparRepetidosDestino);
+
+    listar();
+
+    document.querySelectorAll('.mod072 .ofertas .item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item-mobile').forEach(item => item.classList.remove('active'));
+    document.querySelector('.mod072 .ofertas .item').classList.add('active');
+    document.querySelector('.mod072 .ofertas .item-mobile').classList.add('active');
+
+
+
+  }
+
+  // function listarDestino() {
+  //     if (document.querySelectorAll('.mod072 .item').length >= 4) {
+  //         document.querySelector('.mod072 .ofertas').style.overflowY = "scroll"
+  //     }
+
+  //     limparRepetidosDestino = listaDestino.filter((item, i) => listaDestino.indexOf(item) === i);
+  //     lista.push(...limparRepetidosDestino);
+  //     limparRepetidos = lista.filter((item, i) => lista.indexOf(item) === i);
+
+  //     document.querySelector('.ofertas').innerHTML = limparRepetidos.map(item => item.outerHTML).join('');
+  //     for(i = 0; i < listaDestino.length; i++){
+  //         lista.pop();
+  //     }
+  //     listaDestino = [];
+  //     document.querySelectorAll('.mod072 .ofertas .item').forEach(item => item.classList.remove('active'));
+  //     document.querySelectorAll('.mod072 .ofertas .item-mobile').forEach(item => item.classList.remove('active'));
+  //     document.querySelector('.mod072 .ofertas .item').classList.add('active');
+  //     document.querySelector('.mod072 .ofertas .item-mobile').classList.add('active');
+
+  // }
+
+  function pesquisarOrigem(e) {
+
+    valoresMod072 = 0;
+    document.querySelectorAll('.mod072 .ofertas .item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item-mobile').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item')[0].classList.add('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[0].classList.add('active');
+
+    limparRepetidos.map(item => item.remove());
+    lista = [];
+    let filtro = ar.filter(item => item.querySelector('.origem'));
+    let filtro2 = filtro.filter(item => item.querySelector('.origem').innerText.includes(e.target.innerText));
+
+    lista.unshift(...filtro2);
+    limparDuplicacoes();
+    if (lista != "") {
+      listar(e);
+    } else {
+      return null
+    }
+
+  }
+
+  function pesquisarDestino(e) {
+    valoresMod072 = 0;
+    document.querySelectorAll('.mod072 .ofertas .item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item-mobile').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item')[0].classList.add('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[0].classList.add('active');
+
+
+    limparRepetidosDestino.map(item => item.remove());
+    listaDestino = [];
+    let filtroDes = ar.filter(item => item.querySelector('.destino'));
+
+    let filtro2Dest = filtroDes.filter(item => item.querySelector('.destino').innerText.includes(e.target.innerText));
+    listaDestino.push(...filtro2Dest);
+    limparDuplicacoes();
+    if (listaDestino != "") {
+      listarDestino(e);
+    } else {
+      return null
+    }
+
+
+  }
+
+  const primeiro = duplicados[0];
+  const segundo = duplicados[1];
+
+  function recebeDestino(e) {
+    duplicados.unshift(e.target.innerText);
+    // limparDuplicacoes();
+  }
+
+  function recebeOrigem(e) {
+    duplicados.unshift(e.target.innerText);
+    // limparDuplicacoes();
+  }
+
+  function limparDuplicacoes(primeiro, segundo) {
+
+    document.querySelectorAll('.mod072 .item').forEach(function (item) {
+
+      if (item.innerText.includes(primeiro) && item.innerText.includes(segundo)) {
+
+        duplicadosSomados.push(item);
+        document.querySelector('.ofertas').innerHTML = limparRepetidos.map(item => item.outerHTML).join('');
+      }
+
+
+    });
+
+    // for (i = 0; i < duplicados.length - 1; i++) {
+    //     duplicadosSomados[i].remove();
+    // }
+
+
+    // if (primeiro && segundo) {
+    //     document.querySelector('.ofertas').innerHTML = limparRepetidos.map(item => item.outerHTML).join('');
+
+    // }
+
+  }
+  
+  function limpezaComplemento(){
+  
+//   setTimeout(function(){ 
+        
+    document.querySelectorAll('.mod072 .ofertas .item').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item-mobile').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.mod072 .ofertas .item')[0].classList.add('active');
+    document.querySelectorAll('.mod072 .ofertas .item-mobile')[0].classList.add('active');
+        
+        // }, 1000);
+            
+  }
+  
+  function limpeza(){
+       
+        setTimeout(function(){ 
+        
+        document.querySelector('.ofertas').innerHTML = ar.map(item => item.outerHTML).join(''); 
+        limpezaComplemento();
+        }, 1000);
+        
+        }
+
+  document.querySelectorAll('.limpar-filtro').forEach(item => item.addEventListener('click', limpeza))
+
+  origemDrop.addEventListener('click', pesquisarOrigem);
+  destinoDrop.addEventListener('click', pesquisarDestino);
+  origemDrop.addEventListener('click', recebeDestino);
+  destinoDrop.addEventListener('click', recebeOrigem);
+
+
+  //DATA
+
+  let array = [];
+  let data = [];
+  let semana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
+  let arrayVolta = [];
+  let dataVolta = [];
+
+  //ida
+  document.querySelectorAll('#ida').forEach(function (item, index) {
+    data.push('data' + index);
+    array.push(item)
+  })
+
+  array.map(function (item, index) {
+    data[index] = new Date(dateReverse(item.innerText)).getUTCDay()
+    document.querySelectorAll('#ida-dia')[index].innerText = semana[data[index]]
+  })
+
+  //volta
+
+  document.querySelectorAll('#volta').forEach(function (item, index) {
+    dataVolta.push('datas' + index);
+    arrayVolta.push(item)
+  })
+
+  arrayVolta.map(function (item, index) {
+    dataVolta[index] = new Date(dateReverse(item.innerText)).getUTCDay()
+    document.querySelectorAll('#volta-dia')[index].innerText = semana[dataVolta[index]]
+  })
+
+  function dateReverse(str) {
+    return str.split('/').reverse().join('/');
+  }
+</script>
+    </body>
+</html>

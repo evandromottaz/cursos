@@ -1,0 +1,47 @@
+body {
+    background: #a6a6eb;
+    font: normal 15px Arial;
+}
+
+header {
+    text-align: center;
+    color: white;
+}
+
+section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+    color: black;
+    box-shadow: 5px 5px 10px rgba(146, 95, 0, 0.445);
+}
+
+.txtarea {
+    height: auto;
+    min-height: 100px;
+    border: 1px solid lightgrey;
+    width: 190px
+}
+
+.txtarea ul {
+    margin: 0;
+    padding: 5px;
+    list-style-type: none;
+}
+
+.grey {
+    background: lightgrey;
+}
+
+select {
+    width: 100%;
+    border: none;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    font-style: italic;
+}

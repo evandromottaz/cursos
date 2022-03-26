@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/uber.css" rel="stylesheet">
+    </head>
+    <body>
+        <style>
+            #canta-x {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                max-width: 1180px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: space-between;
+            }
+
+            .canta-x-box {
+                padding: 15px 20px;
+                box-sizing: border-box;
+                display: block;
+                border: none;
+                border-radius: 10px;
+                font-family: "Nunito", sans-serif;
+                text-align: center;
+            }
+            
+            .canta-x-box p {
+                display: block;
+                margin: 0;
+            }
+
+            .canta-x-category {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 1px solid;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                line-height: 1.2;
+                height: 39px;
+            }
+
+            .canta-x-old-value {
+                text-decoration: line-through;
+            }
+
+            #canta-x-box-clube {
+                background-color: #663399;
+                color: #fff;
+            }
+            #canta-x-box-geral {
+                background-color: #ff7020;
+                color: #fff;
+            }
+
+            .canta-x-price {
+                font-size: 3.4em;
+                line-height: 1.1;
+                color: #7c7c7c;
+                display: block;
+            }
+
+            .canta-x-preco-subtitle {
+                color: #7c7c7c;
+                font-weight: bold;
+            }
+
+            @media(max-width:700px) {
+                #canta-x{
+                    grid-template-columns:1fr;
+                    background-color: #ddd;
+                }
+                .canta-x-price {
+                font-size: 2em;
+                color: #7c7c7c;
+                }
+
+            }
+
+
+
+        </style>
+        <div id="canta-x">
+            <div id="canta-x-box-clube" class="canta-x-box">
+                <strong class="canta-x-category">Clube Smiles ou<br> Clientes Diamantes</strong>
+                <p><s>De: <strong>2.750</strong> milhas</s></p>
+                <p class="canta-x-new-value">Para: <strong>2.350</strong> milhas</p>
+            </div>
+            <div id="canta-x-box-oferta" class="canta-x-box">
+                <strong class="canta-x-price">R$ 50</strong>
+                <p class="canta-x-preco-subtitle">em créditos Uber
+                <p class="canta-x-preco-subtitle">De: <strong>2.750</strong> milhas</p>
+            </div>
+            <div id="canta-x-box-geral" class="canta-x-box">
+                <strong class="canta-x-category">Cliente Smiles</strong>
+                <p><s>De: <strong>2.750</strong> milhas</s></p>
+                <p class="canta-x-new-value">Para: <strong>2.550</strong> milhas</p>
+            </div>
+        </div>
+    </body>
+</html>

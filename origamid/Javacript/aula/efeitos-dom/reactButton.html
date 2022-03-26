@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        background: #ccc;
+      }
+
+      label {
+        display: block;
+        margin:1rem 0 .5rem;
+      }
+
+      .reactButton {
+        display: grid;
+        gap:30px;
+        padding: 30px;
+        grid-template-columns: 200px 1fr;
+      }
+
+      .controles {
+        font-family: "IBM Plex Mono",monospace;
+        font-size: .875rem;
+        padding: 1rem;
+        border-radius: 4px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+        background: #eee;
+      }
+
+      .css {
+        font-family: "IBM Plex Mono", monospace;
+        color: #333;
+        margin-top: 40px;
+      }
+
+      .css span {
+        display: block;
+        margin-bottom: .5rem;
+      }
+    </style>
+
+    <section class="reactButton">
+      <form action="" class="controles">
+        <label for="">Nome do botão</label>
+        <input type="text" name="name" data-name data-name2>
+  
+        <label for="">Estilo da font</label>
+        <select name="fontFamily" id="">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="monospace">monospace</option>
+        </select>
+        
+        <label for="">Tamanho da font</label>
+        <input type="number" name="fontSize">
+        
+        <label for="">Cor da font</label>
+        <input type="color" name="color">
+        
+        <label for="">Cor do botão</label>
+        <input type="color" name="backgroundColor">
+        
+        <label for="">Altura do botão</label>
+        <input type="range" name="height" min="0" max="200">
+        
+        <label for="">Largura do botão</label>
+        <input type="range" name="width" min="0" max="20">        
+      </form>
+      <section class="resultado">
+        <button class="btn">Click</button>
+        <pre><code class="css"></code></pre>
+      </section>
+    </section>
+    
+    <script>
+      function React() {
+        const controles = document.querySelector('.controles')
+        const css = document.querySelector('.css')
+        const botao = document.querySelector('.btn')
+        controles.addEventListener('change',changeEvent)
+
+        
+
+        const handleStyle = {
+          element: botao,
+          name(value) {
+            console.log('deu certo')
+            this.element.innerText = value
+          },
+          fontFamily(value) {
+            this.element.style.fontFamily = value
+          },
+          fontSize(value) {
+            this.element.style.fontSize = value + 'px'
+          },
+          color(value) {
+            this.element.style.color = value
+          },
+          backgroundColor(value) {
+            this.element.style.backgroundColor = value
+          },
+          height(value) {
+            this.element.style.height = value + 'px'
+          },
+          width(value) {
+            this.element.style.width = value + 'em'
+          },
+        }
+
+        console.log(handleStyle.name())
+
+        function changeEvent(event) {
+          const name = event.target.name
+          const value = event.target.value
+
+          handleStyle[name](value)
+          saveValues(name, value)
+          showCss()
+        }
+        
+        function saveValues(name,value) {
+          localStorage[name] = value
+        }
+
+        function setValues() {
+          const properties = Object.keys(localStorage)
+          properties.forEach(propertie => {
+            handleStyle[propertie](localStorage[propertie])
+            controles.elements[propertie].value = localStorage[propertie]
+          })
+          showCss();
+        }
+
+        setValues()
+
+        function showCss() {
+          css.innerHTML = '<span>' + botao.style.cssText.split('; ').join(';</span><span>')
+        }
+      }
+      
+      function React2() {
+        const controles = document.querySelector('.controles')
+        const botao = document.querySelector('.btn')
+        const css = document.querySelector('.css')
+        controles.addEventListener('change', handleEvent)
+
+        const styles = {
+          botao: botao,
+          name(value) {
+            this.botao.innerText = value
+          },
+          fontFamily(value) {
+            this.botao.style.fontFamily = value
+          },
+          fontSize(value) {
+            this.botao.style.fontSize = value + 'em'
+          },
+          color(value) {
+            this.botao.style.color = value
+          },
+          backgroundColor(value) {
+            this.botao.style.backgroundColor = value
+          },
+          height(value) {
+            this.botao.style.height = value + 'px'
+          },
+          width(value) {
+            this.botao.style.width = value + 'em'
+          },
+        }
+
+        function handleEvent(event) {
+          const name = event.target.name
+          const value = event.target.value
+
+          styles[name](value)
+          saveValues(name, value)
+          showCss()
+        }
+
+        function showCss() {
+          css.innerHTML = '<span>' + botao.style.cssText.split('; ').join('</span><span>')
+        }
+
+        function saveValues(name, value) {
+          localStorage[name] = value
+        }
+
+        function setValues() {
+          const properties = Object.keys(localStorage)
+          properties.forEach(propertie => {
+            styles[propertie](localStorage[propertie])
+            controles.elements[propertie].value = localStorage[propertie]
+          })
+        }
+
+        setValues()
+      }
+
+      React();
+    </script>
+  </body>
+  
+</html>

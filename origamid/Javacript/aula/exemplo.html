@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <style>
+            ul {
+                margin: 0 auto;
+                padding: 0;
+                margin: 0;
+            }
+
+            .oi {
+                animation: oi 1s forwards;
+                display: block;
+                text-align: center;
+                margin: 40px 0;
+                list-style: none;
+                color: #663399;
+                font-size: 2em;
+                text-shadow: 2px 0 15px #639;
+                border: 3px solid #663399;
+                border-radius: 5px;
+                padding: 10px;
+                position: relative;
+            }
+
+            @keyframes oi {
+                from {
+                    left: -150px;
+                    opacity: 0;
+                }
+
+                to {
+                    left: 0;
+                    opacity: 1;
+                }
+            }
+
+        </style>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <p>Olha como funciona isso!</p>
+    <script src="./exercicios/forEach-map.js"></script>
+    </body>
+</html>

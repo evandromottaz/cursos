@@ -1,0 +1,86 @@
+body {
+    background: #a6a6eb;
+    font: normal 15px Arial;
+}
+
+header {
+    text-align: center;
+    color: white;
+}
+
+section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+    color: black;
+    box-shadow: 5px 5px 10px rgba(146, 95, 0, 0.445);
+}
+
+section > p > button {
+    background: #deacff;
+    border:1px solid #750bff;
+    padding:5px 15px;
+    align-self: center;
+    color: #750bff;
+    transition: .3s ease;
+}
+
+section > p > button:hover {
+    opacity: .8;
+}
+
+.txtarea {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    min-height: 100px;
+    /* border: 1px solid lightgrey; */
+    width: 100%
+}
+
+.txtarea ul {
+    margin: 0;
+    padding: 5px;
+    list-style-type: none;
+}
+
+.txtarea p {
+    padding: 10px;
+}
+
+@media(max-width:400px) {
+    .txtarea {
+        display: block;
+    }
+
+    .txtarea p{
+        padding: 0px;
+        margin: 10px 0;
+    }
+
+    section > p {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #numero {
+        margin: 10px 0;
+    }
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    display: none;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    font-style: italic;
+}
