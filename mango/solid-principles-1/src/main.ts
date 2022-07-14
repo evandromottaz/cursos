@@ -1,0 +1,1 @@
+import './open-closed-and-injection-dependecy'
