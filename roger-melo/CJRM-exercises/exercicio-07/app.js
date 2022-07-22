@@ -97,22 +97,25 @@ for (let i = 0; i < randomValues.length; i++) {
   const randomItem = randomValues[i]
   const isString = typeof randomItem === 'string'
   const countStringGreaterThan4 = stringArray.length >= 4
+  countLoop++
 
   if (isString) {
-    countLoop++
     if (countStringGreaterThan4) {
       break;
     } else {
       stringArray.push(randomItem)
     }
-  } else {
+  } else if (typeof randomItem === 'boolean') {
     countBooleans++
+  } else {
+    return;
   }
 }
 
+const raindomString = stringArray.join(', ').replace(', G', ' e G')
 const templateHTML = `
   3 informações sobre o array randomValues:
-    - As primeiras 4 strings são ${stringArray.join(', ').replace(', G', ' e G')};
+    - As primeiras 4 strings são ${raindomString};
     - Até que as primeiras 4 strings fossem iteradas, ${countBooleans} booleans foram iterados;
     - O array foi iterado por ${countLoop} vezes.
 `
