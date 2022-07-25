@@ -41,12 +41,13 @@ let sumNumbers = 0
 for (let i = 0; i < randomNumbers.length; i++) {
   const number = randomNumbers[i];
   const isNumberGreaterThan400 = sumNumbers > 400
-  sumNumbers += number
 
   if (isNumberGreaterThan400) {
     console.log(`A soma ultrapassou 400. Até aqui, o valor atual é ${sumNumbers}.`)
     break
   }
+
+  sumNumbers += number
 }
 
 /*
@@ -59,18 +60,17 @@ for (let i = 0; i < randomNumbers.length; i++) {
 */
 
 const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sabedoria.']
-let phraseSentence = ''
+let newSentence = ''
 
 for (let i = 0; i < sentence.length; i++) {
-  const word = sentence[i]
-  const isNotCertezaOnArray = word !== 'certeza'
-
-  if (isNotCertezaOnArray) {
-    phraseSentence += `${word} `
+  if (sentence[i] === 'certeza') {
+    continue
   }
+
+  newSentence += `${sentence[i]} `
 }
 
-console.log(phraseSentence)
+console.log(newSentence)
 
 /*
   05
@@ -88,39 +88,35 @@ console.log(phraseSentence)
 */
 
 const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
-const stringArray = []
-let countBooleans = 0
-let countLoop = 0
-
+let stringAmount = []
+let booleanCount = 0
+let interableCount = 0
 
 for (let i = 0; i < randomValues.length; i++) {
-  const randomItem = randomValues[i]
-  const isString = typeof randomItem === 'string'
-  const countStringGreaterThan4 = stringArray.length >= 4
-  countLoop++
+  const item = randomValues[i]
+  const typeItem = typeof item
 
-  if (isString) {
-    if (countStringGreaterThan4) {
-      break;
-    } else {
-      stringArray.push(randomItem)
-    }
-  } else if (typeof randomItem === 'boolean') {
-    countBooleans++
-  } else {
-    return;
+  if (stringAmount.length === 4) {
+    break
   }
+
+  if (typeItem === 'string') {
+    stringAmount.push(item)
+  }
+
+  if (typeItem === 'boolean') {
+    booleanCount++
+  }
+
+  interableCount++
 }
 
-const raindomString = stringArray.join(', ').replace(', G', ' e G')
-const templateHTML = `
-  3 informações sobre o array randomValues:
-    - As primeiras 4 strings são ${raindomString};
-    - Até que as primeiras 4 strings fossem iteradas, ${countBooleans} booleans foram iterados;
-    - O array foi iterado por ${countLoop} vezes.
-`
+const fourStrings = stringAmount.join(', ').replace(` e ${stringAmount[stringAmount.length - 1]}`)
 
-console.log(templateHTML)
+console.log(`3 informações sobre o array randomValues:
+  - As primeiras 4 strings são ${fourStrings};
+  - Até que as primeiras 4 strings fossem iteradas, ${booleanCount} booleans foram iterados;
+  - O array foi iterado por ${interableCount} vezes.`)
 
 /*
   06
@@ -170,10 +166,10 @@ console.log(drinkPhrase)
     para testar o switch que você escreveu.
 */
 
-const a = 0
-const phrase = `O valor de "a" é ${a}`
+const number = 0
+const phrase = `O valor de "number" é ${number}`
 
-switch (a) {
+switch (number) {
   case 0:
     console.log(phrase)
     break;
