@@ -13,9 +13,8 @@
     valor no console.
 */
 
-function convertToString (value) {
-  return String(value)
-}
+const convertToString = value => String(value)
+console.log(convertToString('oi'))
 
 /*
   02
@@ -23,6 +22,9 @@ function convertToString (value) {
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+
+const caractersAmount = string => String(string).length
+console.log(caractersAmount('Evandro'))
 
 /*
   03
@@ -34,12 +36,18 @@ function convertToString (value) {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
+const lowerCasePhrase = phrase => String(phrase).toLowerCase()
+console.log(lowerCasePhrase('CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO'))
+
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+
+const caracterIndex = (caracter, string) => String(string).indexOf(caracter)
+console.log(caracterIndex('S', 'JavaScript'))
 
 /*
   05
@@ -48,12 +56,18 @@ function convertToString (value) {
     passado por argumento existe no array (também passado por argumento).
 */
 
+const hasItem = (item, array) => Array.from(array).includes(item)
+console.log(hasItem('café', ['leite', 'pão', 'café']))
+
 /*
   06
 
   - Crie uma função que retorna a concatenação de 2 arrays, passados como  
     argumentos em sua invocação;
 */
+
+const arrayConcat = (firstArray, secondArray) => Array.from(firstArray).concat(secondArray)
+console.log(arrayConcat(['JavaScript', 'CSS', 'HTML'], ['React', 'StyledComponent', 'JSX']))
 
 /*
   07
@@ -62,12 +76,26 @@ function convertToString (value) {
     mas com o último item removido.
 */
 
+
+const newArr = []
+
+const removeLastItem = array => {
+  const noLastIndex = (item, index) => index !== array.length - 1 && newArr.push(item);
+  Array.from(array).forEach(noLastIndex)
+
+  return newArr
+}
+console.log(removeLastItem(['café', 'leite', 'pão', 'chinelo']))
+
 /*
   08
 
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const isNull = value => value === null
+console.log(isNull(null))
 
 /*
   09
