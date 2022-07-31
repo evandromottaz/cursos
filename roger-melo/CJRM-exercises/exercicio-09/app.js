@@ -108,7 +108,10 @@ console.log(isNull(null))
     foi exibido.
 */
 
+const myName = () => console.log('Evandro')
+const myFunc = callback => callback()
 
+myFunc(myName)
 
 /*
   10
@@ -121,6 +124,10 @@ console.log(isNull(null))
     resulte no triplo de 33.
 */
 
+const cubeNumber = (number) => number ** 3
+const myFunc2 = callback => callback
+console.log(myFunc2(cubeNumber(33)))
+
 /*
   11
 
@@ -131,6 +138,7 @@ console.log(isNull(null))
 */
 
 const numbers = [1, 2, 3]
+numbers.forEach(number => console.log(`O ${number}º item do array [${numbers}] é ${number}.`))
 
 /*
   12
@@ -143,9 +151,8 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+letters.forEach(letter => lettersCopy.push(letter))
+console.log(lettersCopy)
 
 /*
   13
@@ -176,6 +183,8 @@ const review = [
 
 let paragraphs = ''
 
+review.forEach(phrase => paragraphs += `<p>${phrase}</p>`)
+
 section.innerHTML = paragraphs
 
 /*
@@ -198,3 +207,38 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const whoLikes = (namesArray) => {
+  const twoPeople = []
+
+  if (namesArray.length > 2) {
+    namesArray.forEach((name, index) => index <= 1 && twoPeople.push(name))
+  }
+
+  const lastName = namesArray[namesArray.length - 1]
+  const phrasePluralOrSingular = namesArray.length > 1 ? 'curtiram isso' : 'curtiu isso'
+  const numberNamesLess2 = namesArray.length - 2
+  let phrase = ''
+
+  switch (namesArray.length) {
+    case 0:
+      phrase = `ninguém ${phrasePluralOrSingular}`;
+      break;
+    case 1:
+      phrase = `${namesArray[0]} ${phrasePluralOrSingular}`;
+      break;
+    case 2:
+      phrase = `${namesArray.join(' e ')} ${phrasePluralOrSingular}`
+      break;
+    case 3:
+      phrase = `${namesArray.join(', ').replace(`, ${lastName}`, ` e ${lastName}`)} ${phrasePluralOrSingular}`
+      break;
+    default:
+      phrase = `${twoPeople.join(', ')} e mais ${numberNamesLess2} ${phrasePluralOrSingular}`
+  }
+
+  return phrase;
+}
+
+const likes = whoLikes(['Evandro', 'Alfredo', 'Zézinho', 'Joãozinho'])
+console.log(likes)
