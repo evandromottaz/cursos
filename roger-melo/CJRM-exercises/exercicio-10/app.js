@@ -10,6 +10,15 @@
   - Exiba o objeto no console.
 */
 
+const cat = {
+  name: 'Nina',
+  age: 1,
+  color: 'cinza',
+  bestFriends: ['Mingau', 'Le'],
+  sound: () => 'meow!'
+}
+console.log(cat)
+
 /*
   02
 
@@ -19,11 +28,16 @@
   Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "X", "age", que recebeu "X", "color", que recebeu "X", "bestFriends", que recebeu um array com os itens "X" e "X", e "sound", que recebeu uma função que retorna "X".
 */
 
+console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "${cat.name}", "age", que recebeu "${cat.age}", "color", que recebeu "${cat.color}", "bestFriends", que recebeu um array com os itens "${cat.bestFriends[0]}" e "${cat.bestFriends[1]}", e "sound", que recebeu uma função que retorna "${cat.sound()}".`)
+
 /*
   03
 
   - Adicione 2 anos à idade do gato e exiba a idade atualizada no console.
 */
+
+cat.age += 2
+console.log(cat.age)
 
 /*
   04
@@ -32,6 +46,10 @@
   - Exiba o array de amigos no console para verificar se o novo amigo(a) foi  
     adicionado.
 */
+
+const addFriend = (friend) => cat.bestFriends.push(friend)
+addFriend('Eva')
+console.log(cat.bestFriends)
 
 /*
   05
@@ -42,6 +60,11 @@
     colchetes.
 */
 
+const color = 'white'
+const newColor = (secundaryColor) => cat[secundaryColor] = secundaryColor
+newColor(color)
+console.log(cat[color])
+
 /*
   06
 
@@ -49,6 +72,9 @@
     parâmetro é um objeto;
   - Utilize a função para exibir no console se "cat" é um objeto.
 */
+
+const isBool = (object) => typeof object === 'object'
+console.log(isBool(cat))
 
 /*
   07
@@ -60,6 +86,16 @@
   "A soma das idades de NOME_DO_GATO e NOME_DO_CACHORRO é RESULTADO_DA_SOMA."
 */
 
+const dog = {
+  name: 'Rufos',
+  age: 2,
+  color: 'preto',
+  bestFriends: ['Bart', 'Golias'],
+  sound: () => 'awoo!'
+}
+
+console.log(`A soma das idades de ${cat.name} e ${dog.name} é ${cat.age + dog.age}.`)
+
 /*
   08
 
@@ -69,15 +105,17 @@
 */
 
 const isAnSUV = car => {
-  if (car === 'Honda HR-V' || car === 'Jeep Renegade' || car === 'Ford EcoSport' || car === 'Hyundai iX35') {
+  const cars = ['Honda HR-V', 'Jeep Renegade', 'Ford EcoSport', 'Hyundai iX35']
+
+  if (cars.includes(car)) {
     return true
   }
 
   return false
 }
 
-// console.log(isAnSUV('Honda Civic'))
-// console.log(isAnSUV('Ford EcoSport'))
+console.log(isAnSUV('Honda Civic'))
+console.log(isAnSUV('Ford EcoSport'))
 
 /*
   09
@@ -91,3 +129,15 @@ const isAnSUV = car => {
     propriedades, retorne a mensagem que a propriedade armazena;
   - Teste a função, exibindo no console a mensagem de cada propriedade.
 */
+
+const wichType = type => {
+  const types = {
+    null: 'Seta, explicitamente, uma variável sem valor.',
+    undefined: 'Representa um valor não-setado.',
+    object: 'Arrays, Datas, Objetos literais, Funções, etc.'
+  }
+
+  return types[type]
+}
+
+console.log(wichType('object'))
