@@ -47,7 +47,7 @@ console.log(cat.age)
     adicionado.
 */
 
-const addFriend = (friend) => cat.bestFriends.push(friend)
+const addFriend = friend => cat.bestFriends.push(friend)
 addFriend('Eva')
 console.log(cat.bestFriends)
 
@@ -61,7 +61,7 @@ console.log(cat.bestFriends)
 */
 
 const color = 'white'
-const newColor = (secundaryColor) => cat[secundaryColor] = secundaryColor
+const newColor = secundaryColor => cat[secundaryColor] = secundaryColor
 newColor(color)
 console.log(cat[color])
 
@@ -94,7 +94,9 @@ const dog = {
   sound: () => 'awoo!'
 }
 
-console.log(`A soma das idades de ${cat.name} e ${dog.name} é ${cat.age + dog.age}.`)
+const renderMessage = (cat, dog) => `A soma das idades de ${cat.name} e ${dog.name} é ${cat.age + dog.age}.`
+
+console.log(renderMessage(cat, dog))
 
 /*
   08
