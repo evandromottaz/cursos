@@ -124,7 +124,7 @@ myFunc(myName)
     resulte no triplo de 33.
 */
 
-const cubeNumber = (number) => number ** 3
+const cubeNumber = (number) => number * 3
 const myFunc2 = callback => callback
 console.log(myFunc2(cubeNumber(33)))
 
@@ -208,36 +208,23 @@ section.innerHTML = paragraphs
     pessoas já mencionadas no início da mensagem).
 */
 
-const whoLikes = (namesArray) => {
-  const twoPeople = []
-
-  if (namesArray.length > 2) {
-    namesArray.forEach((name, index) => index <= 1 && twoPeople.push(name))
-  }
-
+const whoLikes = (namesArray = []) => {
   const lastName = namesArray[namesArray.length - 1]
-  const phrasePluralOrSingular = namesArray.length > 1 ? 'curtiram isso' : 'curtiu isso'
   const numberNamesLess2 = namesArray.length - 2
   let phrase = ''
 
   switch (namesArray.length) {
     case 0:
-      phrase = `ninguém ${phrasePluralOrSingular}`;
-      break;
+      return 'ninguém curtiu isso';
     case 1:
-      phrase = `${namesArray[0]} ${phrasePluralOrSingular}`;
-      break;
+      return `${namesArray[0]} curtiu isso`;
     case 2:
-      phrase = `${namesArray.join(' e ')} ${phrasePluralOrSingular}`
-      break;
+      return `${namesArray[0]} e ${namesArray[1]} curtiram isso`
     case 3:
-      phrase = `${namesArray.join(', ').replace(`, ${lastName}`, ` e ${lastName}`)} ${phrasePluralOrSingular}`
-      break;
+      return `$${namesArray[0]} ${namesArray[1]} ${namesArray[2]} curtiram isso`
     default:
-      phrase = `${twoPeople.join(', ')} e mais ${numberNamesLess2} ${phrasePluralOrSingular}`
+      return `${namesArray[0]} ${namesArray[1]} e mais ${numberNamesLess2} curtiram isso`
   }
-
-  return phrase;
 }
 
 const likes = whoLikes(['Evandro', 'Alfredo', 'Zézinho', 'Joãozinho'])
