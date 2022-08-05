@@ -27,6 +27,10 @@ const best2019Movies = [
   { title: 'A Vida Invisível', directedBy: 'Karim Aïnouz' }
 ]
 
+let templateMovies = 'Segundo o site Omelete, os melhores filmes de 2019 são:\n'
+best2019Movies.forEach(({ title, directedBy }) => templateMovies += `- ${title}, dirigido por ${directedBy}\n`)
+console.log(templateMovies)
+
 /*
   02
 
@@ -50,7 +54,12 @@ const youtubeUser = {
       { title: 'Introdução ao TDD - Parte 02 | JavaScript | Jest', length: '28:28' },
       { title: 'Introdução ao TDD | JavaScript | Jest', length: '19:29' },
       { title: 'Higher-order Functions | JavaScript', length: '47:38' }
-    ]
+    ],
+    message() {
+      let templateMessage = `Vídeos recentes de Roger Melo:\n`
+      this.recentVideos.forEach(({ title }) => templateMessage += `${title}\n`)
+      console.log(templateMessage)
+    },
   },
   about: {
     description: '🔥 Ensino as pessoas a alcançarem a fluência em JavaScript! 🔥',
@@ -62,13 +71,16 @@ const youtubeUser = {
   }
 }
 
+youtubeUser.videos.message()
+
 /*
   03
 
   - Exiba o valor do PI no console.
 */
 
-
+console.log(Math.PI)
+console.clear()
 
 /*
   04
@@ -78,7 +90,8 @@ const youtubeUser = {
 */
 
 const firstNumber = 8.3
-
+const roundToUpNumber = Math.ceil(firstNumber)
+console.log(roundToUpNumber)
 /*
   05
 
@@ -87,6 +100,8 @@ const firstNumber = 8.3
 */
 
 const secondNumber = 3.5
+const roundNumber = Math.round(secondNumber)
+console.log(roundNumber)
 
 /*
   06
@@ -96,6 +111,8 @@ const secondNumber = 3.5
 */
 
 const thirdNumber = 8.9
+const roundToDownNumber = Math.floor(thirdNumber)
+console.log(roundToDownNumber)
 
 /*
   07
@@ -104,6 +121,8 @@ const thirdNumber = 8.9
 */
 
 const fourthNumber = 5.5
+const integerNumber = Math.trunc(fourthNumber)
+console.log(integerNumber)
 
 /*
   08
@@ -111,3 +130,6 @@ const fourthNumber = 5.5
   - A cada vez que o index.html for carregado, exiba no console um número  
     aleatório de 0 à 10, incluindo 0 e 10.
 */
+
+const randomNumber0To10 = Math.random() * 10
+console.log(Math.trunc(randomNumber0To10))
