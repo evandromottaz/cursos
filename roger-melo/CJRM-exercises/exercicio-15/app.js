@@ -68,11 +68,13 @@ const videos = [{
 }]
 
 const addVideosOnList = () => {
-  videos.forEach(video => {
+  const inputTextOnLi = video => {
     const li = document.createElement('li')
     li.innerText = video.name
     ul.append(li)
-  })
+  }
+
+  videos.forEach(inputTextOnLi)
 }
 const addVideos = document.querySelector('button')
 addVideos.addEventListener('click', addVideosOnList)
@@ -85,7 +87,5 @@ addVideos.addEventListener('click', addVideosOnList)
 */
 
 const body = document.body
-const childrens = Array.from(body.children)
-const removeAllElements = () => childrens.forEach(element => element.remove())
 
-h1.addEventListener('click', removeAllElements)
+h1.addEventListener('click', () => body.innerHTML = '')
