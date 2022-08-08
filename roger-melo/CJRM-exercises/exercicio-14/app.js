@@ -17,7 +17,7 @@ h1.innerText = h1.innerText.toUpperCase()
 
 const numbers = [53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55]
 const ul = document.querySelector('.numbers')
-numbers.forEach(number => ul.innerHTML += `<li>${number}</li>`)
+numbers.forEach(number => ul.innerHTML += `<li class="number">${number}</li>`)
 
 /*
   03
@@ -28,15 +28,18 @@ numbers.forEach(number => ul.innerHTML += `<li>${number}</li>`)
 */
 
 const lis = ul.querySelectorAll('li')
-lis.forEach(li => {
+const changeLiColors = li => {
   const number = Number(li.innerText)
-  oddNumber = number % 2 === 0
-  if (oddNumber) {
+  evenNumber = number % 2 === 0
+  if (evenNumber) {
     li.style.color = 'lightblue'
-  } else {
-    li.style.color = 'pink'
+    return;
   }
-})
+
+  li.style.color = 'pink'
+}
+
+lis.forEach(changeLiColors)
 
 /*
   04
@@ -46,7 +49,7 @@ lis.forEach(li => {
   P.s: a classe "body-background" já está declarada no style.css.
 */
 
-const body = document.documentElement
+const body = document.body
 body.classList.add('body-background')
 
 /*
