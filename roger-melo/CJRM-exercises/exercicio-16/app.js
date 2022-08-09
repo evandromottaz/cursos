@@ -6,17 +6,21 @@
 */
 
 const div = document.querySelector('div')
+const subTitle = document.querySelector('h2')
 const elementsInsideDiv = Array.from(div.children)
 
 elementsInsideDiv.forEach(element => {
-  element.addEventListener('click', () => {
-    console.log('Clicou no filho da div.')
+  element.addEventListener('click', event => {
+    const tagLowerCase = event.target.tagName.toLowerCase()
+    event.stopPropagation()
+    subTitle.innerText = `Clicou no filho da div. Clicou no ${tagLowerCase}, filho da div.`
   })
 })
 
 div.addEventListener('click', () => {
   console.log('Clicou na div.')
 })
+
 
 /*
   02
@@ -41,6 +45,8 @@ div.addEventListener('click', () => {
     seja exibida no console.
 */
 
+subTitle.addEventListener('copy', () => console.log('Texto copiado!'))
+
 /*
   05
 
@@ -49,12 +55,21 @@ div.addEventListener('click', () => {
     "Eixo X: COORDENADA_EIXO_X | Eixo Y: COORDENADA_EIXO_Y".
 */
 
+const divEgg = document.querySelector('.egg')
+divEgg.addEventListener('mousemove', ({ pageX, pageY }) => {
+  divEgg.innerText = `Eixo X: ${pageX} | Eixo Y: ${pageY}`
+})
+
 /*
   06
 
   - Modifique a cor do ovo para "lightgoldenrodyellow" quando o botão for 
     clicado.
 */
+
+const btn = document.querySelector('button')
+const changeDivEggColor = () => divEgg.style.background = 'lightgoldenrodyellow'
+btn.addEventListener('click', changeDivEggColor)
 
 /*
   07
@@ -76,3 +91,8 @@ const people = [
   { id: 8, name: 'Matheus Manucci', profession: 'Piloto' },
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
+const hasDeveloperPerson = people.some(person => person.profession === 'Front-end developer')
+
+if (hasDeveloperPerson) {
+  console.log('O array people contém, no mínimo, um(a) Front-end developer.')
+}
