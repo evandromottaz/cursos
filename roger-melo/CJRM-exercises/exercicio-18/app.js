@@ -21,6 +21,31 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 
+const form = document.querySelector('form')
+const input = document.querySelector('#username')
+const p = document.createElement('p')
+form.append(p)
+const paragraph = form.querySelector('p')
+
+const setMessage = text => paragraph.innerText = text
+const setClassMessage = className => paragraph.setAttribute('class', className)
+const isValidUser = query => /^[a-zA-z]{6,}$/.test(query)
+
+const onKeyUp = ({ target }) => {
+  input.insertAdjacentElement('afterend', paragraph)
+
+  if (isValidUser(target.value)) {
+    setMessage('Username válido =)')
+    setClassMessage('username-success-feedback')
+    return;
+  }
+
+  setMessage('O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas')
+  setClassMessage('username-help-feedback')
+}
+
+input.addEventListener('keyup', onKeyUp)
+
 /*
   02
 
@@ -32,6 +57,25 @@
   - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
   - Não insira o parágrafo manualmente no index.html.
 */
+
+
+const onSubmit = (e) => {
+  e.preventDefault()
+
+  const btn = form.querySelector('button')
+  btn.insertAdjacentElement('afterend', paragraph)
+
+  if (isValidUser(input.value)) {
+    setMessage('Dados enviados =)')
+    setClassMessage('submit-success-feedback')
+    return;
+  }
+
+  setMessage('Por favor, insira um username válido');
+  setClassMessage('submit-help-feedback')
+}
+
+form.addEventListener('submit', onSubmit)
 
 /*
   03
@@ -50,3 +94,22 @@
         6;
     2) Pesquisar no MDN.
 */
+
+const fruits = ['maça', 'banana', 'melão']
+
+const someFruits = (array, query) => {
+  let found = 0
+  const searchForFruit = item => {
+    if (item === query) {
+      found++
+    }
+  }
+
+  array.forEach(item => searchForFruit(item))
+  return found > 0
+}
+
+
+const result = someFruits(fruits, 'banana')
+
+console.log(result)
