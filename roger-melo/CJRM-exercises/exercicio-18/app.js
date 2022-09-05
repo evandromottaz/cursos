@@ -95,21 +95,14 @@ form.addEventListener('submit', onSubmit)
     2) Pesquisar no MDN.
 */
 
-const fruits = ['maça', 'banana', 'melão']
-
-const someFruits = (array, query) => {
-  let found = 0
-  const searchForFruit = item => {
-    if (item === query) {
-      found++
+const some = (array, func) => {
+  for (let i = 0; i < array.length; i++) {
+    if (func(array[i])) {
+      return true
     }
   }
 
-  array.forEach(item => searchForFruit(item))
-  return found > 0
+  return false
 }
 
-
-const result = someFruits(fruits, 'banana')
-
-console.log(result)
+some([1, 2, 3], item => item === 4)
