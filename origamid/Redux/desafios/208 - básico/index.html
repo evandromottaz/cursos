@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="../../libs/redux.min.js"></script>
+		<script src="../../libs/immer.umd.production.min.js"></script>
+	</head>
+	<body>
+		<div id="content">
+			<p>Nome: <span id="nome"></span></p>
+			<p>E-mail: <span id="email"></span></p>
+			<p>Tempo Restante: <span id="tempo-restante"></span></p>
+			<p>Total de aulas completas: <span id="aulas-completas"></span></p>
+		</div>
+
+		<script type="module">
+			import {
+				incrementarTempo,
+				reduzirTempo,
+				modificarEmail,
+				completarAula,
+				completarCurso,
+				resetarCurso,
+			} from "./reducers.js";
+			import store from "./configureStore.js";
+
+			function render() {
+				const { aluno, aulas } = store.getState();
+				const nome = document.getElementById("nome");
+				nome.innerText = aluno.nome;
+
+				const email = document.getElementById("email");
+				email.innerText = aluno.email;
+
+				const tempoRestante = document.getElementById("tempo-restante");
+				tempoRestante.innerText = aluno.diasRestantes;
+
+				const aulasCompletas = document.getElementById("aulas-completas");
+				aulasCompletas.innerText = aulas.filter((aula) => aula.completa === true).length;
+			}
+			render();
+
+			store.subscribe(render);
+
+			store.dispatch(incrementarTempo());
+			store.dispatch(reduzirTempo());
+			store.dispatch(modificarEmail("evandro.redux@gmail.com"));
+			store.dispatch(completarAula(2));
+			store.dispatch(completarCurso());
+			store.dispatch(resetarCurso());
+		</script>
+	</body>
+</html>

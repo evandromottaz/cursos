@@ -1,10 +1,10 @@
 const initialState = {
-  name: 'Evandro',
-  idade: 31,
+	name: "Evandro",
+	idade: 31,
 };
 
 function reducer(state = initialState, action) {
-  return state;
+	return state;
 }
 
 const store = Redux.createStore(reducer);
