@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "strict": true
-  }
+    "strict": true,
+    "sourceMap": true
+  },
+  "include": ["./script.ts"]
 }

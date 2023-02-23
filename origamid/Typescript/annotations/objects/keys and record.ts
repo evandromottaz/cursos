@@ -35,12 +35,6 @@ function mostrarTitulo(obj: ObjetoLiteral2) {
   }
 }
 
-// Erros:
-// mostrarTitulo("string");
-// mostrarTitulo(200);
-// mostrarTitulo([1, 2]);
-// mostrarTitulo(null);
-// mostrarTitulo(undefined);
 mostrarTitulo({
   titulo: "André",
 });
