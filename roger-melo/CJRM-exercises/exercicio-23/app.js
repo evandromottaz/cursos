@@ -6,6 +6,8 @@
 */
 
 const myString = '    JS      '
+const newString = myString.replaceAll(' ','')
+console.log(newString)
 
 /*
   02
@@ -23,6 +25,9 @@ const people = [
   { firstName: 'Eric', lastName: 'Silva', score: 82 }
 ]
 
+const ascPeopleScore = [...people].sort((a, b) => a.score - b.score)
+console.log(ascPeopleScore)
+
 /*
   03
 
@@ -34,7 +39,8 @@ const people = [
 */
 
 const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
-
+const animalsThreeLetters = animals.filter(animal => animal.length === 3)
+console.log(animalsThreeLetters)
 /*
   04
 
@@ -42,8 +48,8 @@ const animals = ['cão', 'gato', 'boi', 'leão', 'gnu', 'alce', 'ema']
     nome de cada animal. Ex.: [6, 8, 2].
 */
 
-
-
+const animalsNumberLetters = animals.map(animal => animal.length)
+console.log(animalsNumberLetters)
 /*
   05
 
@@ -60,8 +66,10 @@ const friends = [
   { id: 5, name: 'Solange', nearMe: false }
 ]
 
-
-
+const friendsNearMe = friends
+  .filter((friend) => friend.nearMe)
+  .map(friend => friend.name)
+console.log(friendsNearMe)
 /*
   06
 
@@ -70,7 +78,10 @@ const friends = [
 */
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81]
-
+const sumOddNumbers = numbers
+  .filter(number => number % 2 !== 0)
+  .reduce((a, b) => a + b, 0)
+console.log(sumOddNumbers)
 /*
   07
 
@@ -91,3 +102,8 @@ const data = [{
   country: 'Indonesia',
   population: 263991379
 }]
+
+const sumPopulationNoChina = data
+  .filter(({ country }) => country !== "China")
+  .reduce((a,b) => a+b.population, 0)
+console.log(sumPopulationNoChina)
