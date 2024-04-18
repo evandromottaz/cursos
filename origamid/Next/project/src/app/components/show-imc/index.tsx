@@ -63,15 +63,32 @@ export default function ShowImc() {
 	return (
 		<>
 			<form onSubmit={onSubmit}>
-				<input type="number" name="height" id="height-imc" step=".1" />
-				<input type="" name="weight" id="weight-imc" />
-				<button>Calcular</button>
+				<input
+					data-testid="imc-height"
+					type="number"
+					name="height"
+					step=".1"
+					placeholder="digite sua altura"
+				/>
+
+				<input
+					data-testid="imc-weight"
+					type=""
+					name="weight"
+					placeholder="digite seu peso"
+				/>
+				<button data-testid="imc-submit" type="submit">
+					Calcular
+				</button>
 			</form>
 
 			{!!result && (
 				<>
 					<p data-testid="imc-result">Seu IMC é de {result}</p>
-					<p>Sua categoria: {getImcCategory(result)}</p>
+					<p>
+						Sua categoria:{" "}
+						<span data-testid="imc-category">{getImcCategory(result)}</span>
+					</p>
 				</>
 			)}
 		</>

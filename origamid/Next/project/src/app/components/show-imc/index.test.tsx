@@ -1,4 +1,6 @@
-import {
+import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import ShowImc, {
 	IMC_ERROR_MESSAGE,
 	calcImc,
 	getImcCategory,
@@ -51,5 +53,20 @@ describe("getImcCategory(imc)", () => {
 	it("should show message if no IMC was passed", () => {
 		const error = getImcCategory();
 		expect(error).toBe(IMC_ERROR_MESSAGE);
+	});
+
+	it("should render IMC category on screen", async () => {
+		render(<ShowImc />);
+
+		fireEvent.change(screen.getByTestId("imc-height"), {
+			target: { value: "1.6" },
+		});
+		fireEvent.change(screen.getByTestId("imc-weight"), { target: { value: "54" } });
+		userEvent.click(screen.getByTestId("imc-submit"));
+
+		await waitFor(async () => {
+			const elCategory = (await screen.findByTestId("imc-category")).textContent;
+			expect(elCategory).toBe(imcCategories.NORMAL);
+		});
 	});
 });
