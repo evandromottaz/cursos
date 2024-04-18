@@ -18,7 +18,7 @@ export const imcCategories = {
 };
 
 export function calcImc({ height, weight }: CalcImcProps) {
-	const imc = weight / (height * 2);
+	const imc = weight / height ** 2;
 	return +imc.toFixed(2).replace(/\d$/, "");
 }
 
