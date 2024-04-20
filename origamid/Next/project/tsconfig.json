@@ -19,7 +19,8 @@
 			}
 		],
 		"paths": {
-			"@/*": ["./src/app/*"],
+			"@/*": ["./src/*"],
+			"@/pages": ["./src/app/*"],
 			"@/components": ["./src/components/*"]
 		}
 	},
