@@ -1,6 +1,6 @@
 - [ ] Utilize a API: https://api.origamid.online/cursos
-- [ ] Crie uma rota chamada cursos
-- [ ] Crie rotas dinâmicas para os cursos, exemplo: /cursos/html
+- [x] Crie uma rota chamada cursos
+- [x] Crie rotas dinâmicas para os cursos, exemplo: /cursos/html
 - [ ] Crie rotas dinâmicas para as aulas, exemplo: /cursos/html/introducao-ao-html
 - [ ] Na página "Cursos", exiba uma lista com todos os cursos
 - [ ] Ao clicar em um curso, mostre uma página com as informações deste curso
