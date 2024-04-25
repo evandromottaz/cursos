@@ -1,4 +1,4 @@
-interface CourseProps {
+interface CourseTitle {
 	id: number;
 	slug: string;
 	nome: string;
@@ -7,9 +7,9 @@ interface CourseProps {
 	total_horas: number;
 }
 
-export async function getCourseList(): Promise<CourseProps[]> {
+export async function getCourseList(slug = ""): Promise<CourseTitle[]> {
 	try {
-		return await (await fetch("https://api.origamid.online/cursos")).json();
+		return await (await fetch(`https://api.origamid.online/cursos/${slug}`)).json();
 	} catch (error) {
 		console.error(error);
 		return [];

@@ -1,7 +1,7 @@
 import { getCourseList } from "@/api/cursos";
 import Link from "next/link";
 
-export default async function CoursePage() {
+export default async function CourseListPage() {
 	const courseList = await getCourseList();
 
 	return (
