@@ -38,7 +38,7 @@ export async function GET() {
 }
 ```
 
-# API's Servidor/Web
+## API's Servidor/Web
 
 Acesso a api's web do servidor como cookies, headers, etc.
 
@@ -84,7 +84,7 @@ export async function GET() {
 }
 ```
 
-# Cookies
+## Cookies
 
 O Next.js possui a função `cookies` que permite acessar e criar HTTP Cookies.
 
@@ -108,7 +108,7 @@ export async function GET() {
 }
 ```
 
-# Request
+## Request
 
 Acesso ao objeto request do servidor.
 
