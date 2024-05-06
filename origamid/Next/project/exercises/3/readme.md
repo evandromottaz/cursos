@@ -1,8 +1,8 @@
-- [ ] Crie uma rota chamada api/login
-- [ ] A rota deve receber um username e password via POST
-- [ ] Utilize a api https://api.origamid.online/conta/login
-- [ ] Envie o username e password para a api e salve o token de acesso nos cookies (httpOnly)
-- [ ] A rota deve retornar se o login foi bem sucedido ou não
+- [x] Crie uma rota chamada api/login
+- [x] A rota deve receber um username e password via POST
+- [x] Utilize a api https://api.origamid.online/conta/login
+- [x] Envie o username e password para a api e salve o token de acesso nos cookies (httpOnly)
+- [x] A rota deve retornar se o login foi bem sucedido ou não
 - [ ] Crie um formulário usando client components para fazer o login
 - [ ] Diretamente no server component, faça um fetch para a api de perfil
 - [ ] Utilize a api https://api.origamid.online/conta/perfil
