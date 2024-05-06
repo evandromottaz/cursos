@@ -11,7 +11,7 @@ export default function FormProduct() {
 		const preco = +e.currentTarget.preco.value;
 		const descricao = e.currentTarget.descricao.value;
 		const estoque = +e.currentTarget.estoque.value;
-		const importado = e.currentTarget.importado.value === "on" ? 1 : 0;
+		const importado = e.currentTarget.importado.checked ? 1 : 0;
 
 		addProduct({ nome, preco, descricao, estoque, importado });
 	};
