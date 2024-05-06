@@ -12,7 +12,10 @@ export async function POST(request: NextRequest) {
 		body: JSON.stringify(user),
 	});
 
-	if (!response.ok) return Response.json({ error: "Usuário ou senha incorreto" });
+	if (!response.ok) {
+		cookies().delete("token");
+		return Response.json({ error: "Usuário ou senha incorreto" });
+	}
 
 	const data = await response.json();
 	cookies().set("token", data.token, { secure: true, httpOnly: true });
