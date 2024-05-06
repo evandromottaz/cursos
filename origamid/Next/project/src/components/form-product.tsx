@@ -21,7 +21,7 @@ export default function FormProduct() {
 			<input type="text" name="nome" placeholder="Nome" />
 			<input type="number" name="preco" placeholder="Preço" />
 			<input type="text" name="descricao" placeholder="Descrição" />
-			<input type="text" name="estoque" placeholder="Estoque" />
+			<input type="number" name="estoque" placeholder="Estoque" />
 			<label htmlFor="importado">
 				<input type="checkbox" name="importado" id="importado" />
 				Importado
