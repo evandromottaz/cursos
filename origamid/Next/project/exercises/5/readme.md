@@ -1,4 +1,4 @@
-- [ ] Criar as rotas /produtos e /produtos/adicionar
+- [x] Criar as rotas /produtos e /produtos/adicionar
 - [ ] Na rota /produtos, faça um fetch para https://api.origamid.online/produtos e mostre a lista de produtos
 - [ ] Na rota /produtos/adicionar, crie um formulário para adicionar um produto.
 - [ ] Crie uma server action que faz um fetch ('POST') para https://api.origamid.online/produtos
