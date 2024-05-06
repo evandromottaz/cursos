@@ -3,9 +3,9 @@
 - [x] Utilize a api https://api.origamid.online/conta/login
 - [x] Envie o username e password para a api e salve o token de acesso nos cookies (httpOnly)
 - [x] A rota deve retornar se o login foi bem sucedido ou não
-- [ ] Crie um formulário usando client components para fazer o login
-- [ ] Diretamente no server component, faça um fetch para a api de perfil
-- [ ] Utilize a api https://api.origamid.online/conta/perfil
-- [ ] Use o token de acesso salvo nos cookies para fazer a requisição (header -> Authorization: Bearer token)
-- [ ] Modifique o menu para mostrar o nome do usuário logado
-- [ ] Se o usuário não estiver autorizado, mostre um link para a página de login no menu
+- [x] Crie um formulário usando client components para fazer o login
+- [x] Diretamente no server component, faça um fetch para a api de perfil
+- [x] Utilize a api https://api.origamid.online/conta/perfil
+- [x] Use o token de acesso salvo nos cookies para fazer a requisição (header -> Authorization: Bearer token)
+- [x] Modifique o menu para mostrar o nome do usuário logado
+- [x] Se o usuário não estiver autorizado, mostre um link para a página de login no menu
