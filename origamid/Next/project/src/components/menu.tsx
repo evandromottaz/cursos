@@ -22,12 +22,21 @@ export default async function Menu() {
 
 	return (
 		<ul className="menu">
-			<Link href="/imc">Imc</Link>
-			<Link href="/cursos">Cursos</Link>
+			<li>
+				<Link href="/imc">Imc</Link>
+			</li>
 
-			<div>
+			<li>
+				<Link href="/cursos">Cursos</Link>
+			</li>
+
+			<li>
 				{account.autorizado ? account.usuario : <Link href="/login">Login</Link>}
-			</div>
+			</li>
+
+			<li>
+				<Link href="/products">Produtos</Link>
+			</li>
 		</ul>
 	);
 }
