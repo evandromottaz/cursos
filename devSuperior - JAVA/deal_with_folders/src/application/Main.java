@@ -25,7 +25,15 @@ public class Main {
         }
 
         boolean success = new File(strPath + "\\pasta_criada").mkdir();
-        System.out.println("Pasta criada com successo: " + success);
+        System.out.println("Pasta criada com sucesso: " + success);
+
+        System.out.println("Mostrando informações do arquivo test.txt");
+
+        String strTest = "c:/temp/test.txt";
+        File testPath = new File(strTest);
+        System.out.println("Nome: " + testPath.getName());
+        System.out.println("Pasta: " + testPath.getParent());
+        System.out.println("Todo Caminho: " + testPath.getPath());
 
         sc.close();
     }
