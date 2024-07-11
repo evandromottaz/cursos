@@ -6,7 +6,11 @@ import model.entities.Installment;
 import java.time.LocalDate;
 
 public class ContractService {
-    private OnlinePaymentService paymentService;
+    private final OnlinePaymentService paymentService;
+
+    public ContractService(OnlinePaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     public void processContract(Contract contract, Integer months) {
         for (int i = 1; i <= months; i++) {
@@ -17,11 +21,7 @@ public class ContractService {
             LocalDate dueDate = contract.getDate().plusMonths(i);
             Installment installment = new Installment(dueDate, fee);
 
-            contract.addInstallment(installment);
+            contract.getInstallments().add(installment);
         }
-    }
-
-    public void setPaymentService(OnlinePaymentService paymentService) {
-        this.paymentService = paymentService;
     }
 }
