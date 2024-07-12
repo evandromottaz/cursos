@@ -6,22 +6,24 @@ import model.entities.Installment;
 import java.time.LocalDate;
 
 public class ContractService {
-    private OnlinePaymentService paymentService;
+    private final OnlinePaymentService paymentService;
 
-    public void processContract(Contract contract, Integer months) {
-        for (int i = 1; i <= months; i++) {
-            Double amount = contract.getTotalValue() / months;
-            Double amountWithInterest = paymentService.interest(amount, i);
-            Double fee = paymentService.paymentFee(amountWithInterest);
-
-            LocalDate dueDate = contract.getDate().plusMonths(i);
-            Installment installment = new Installment(dueDate, fee);
-
-            contract.addInstallment(installment);
-        }
+    public ContractService(OnlinePaymentService paymentService) {
+        this.paymentService = paymentService;
     }
 
-    public void setPaymentService(OnlinePaymentService paymentService) {
-        this.paymentService = paymentService;
+    public void processContract(Contract contract, Integer months) {
+        Double basicQuota = contract.getTotalValue() / months;
+
+        for (int i = 1; i <= months; i++) {
+            Double interest = paymentService.interest(basicQuota, i);
+            Double fee = paymentService.paymentFee(interest + basicQuota);
+            Double quota = basicQuota + fee + interest;
+
+            LocalDate dueDate = contract.getDate().plusMonths(i);
+            Installment installment = new Installment(dueDate, quota);
+
+            contract.getInstallments().add(installment);
+        }
     }
 }

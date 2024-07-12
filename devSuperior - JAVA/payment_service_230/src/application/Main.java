@@ -31,14 +31,13 @@ public class Main {
 
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Contract contract = new Contract(number, LocalDate.parse(date, fmt), totalValue);
-        ContractService contractService = new ContractService();
-        contractService.setPaymentService(new PaypalService());
+        ContractService contractService = new ContractService(new PaypalService());
 
         contractService.processContract(contract, months);
 
         System.out.println("Parcelas:");
 
-        for (Installment installment : contract.getInstallment()) {
+        for (Installment installment : contract.getInstallments()) {
             System.out.println(fmt.format(installment.getDueDate()) + " - " + String.format("%.2f", installment.getAmount()));
         }
 

@@ -43,11 +43,7 @@ public class Contract {
         this.totalValue = totalValue;
     }
 
-    public void addInstallment(Installment installment) {
-        installments.add(installment);
-    }
-
-    public List<Installment> getInstallment() {
+    public List<Installment> getInstallments() {
         return installments;
     }
 
