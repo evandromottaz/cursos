@@ -22,4 +22,3 @@ Então o sistema deve gerar as seguintes parcelas de pagamento:
 | 3 | 01/10/2024 | 207,08 |
 | 4 | 01/11/2024 | 209,15 |
 | 5 | 01/12/2024 | 211,24 |
-
