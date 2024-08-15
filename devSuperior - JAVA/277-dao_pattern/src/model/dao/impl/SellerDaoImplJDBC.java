@@ -4,16 +4,15 @@ import db.DB;
 import db.DbException;
 import entities.Department;
 import entities.Seller;
-import model.dao.GenericDao;
+import model.dao.SellerDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class SellerDaoImplJDBC implements GenericDao<Seller> {
+public class SellerDaoImplJDBC implements SellerDao {
     private final Connection conn;
 
     public SellerDaoImplJDBC(Connection conn) {
@@ -83,5 +82,44 @@ public class SellerDaoImplJDBC implements GenericDao<Seller> {
     @Override
     public List<Seller> findAll() {
         return Collections.emptyList();
+    }
+
+    @Override
+    public List<Seller> findByDepartment(Department department) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<Seller> sellers = new ArrayList<>();
+        Map<Integer, Department> departmentMap = new HashMap<>();
+
+        try {
+            st = conn.prepareStatement(
+                    "SELECT seller.*, department.Name as DepName "
+                            + "FROM seller INNER JOIN department "
+                            + "ON seller.DepartmentId = department.Id "
+                            + "WHERE DepartmentId = ? "
+                            + "ORDER BY Name"
+            );
+            st.setInt(1, department.getId());
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                Department dep = departmentMap.get(department.getId());
+
+                if (dep == null) {
+                    dep = createDepartment(rs);
+                    departmentMap.put(department.getId(), department);
+                }
+
+                Seller seller = createSeller(rs, dep);
+                sellers.add(seller);
+            }
+
+            return sellers;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
     }
 }
