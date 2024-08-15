@@ -30,10 +30,15 @@ public class Program {
         }
 
         System.out.println("\nTEST INSERT NEW SELLER");
-
-        Seller seller1 = new Seller(99, "Greg", "greg@gmail.com", new Date(),
+        Seller seller1 = new Seller(null, "Greg", "greg@gmail.com", new Date(),
                 3000.00, department);
         sellerDao.insert(seller1);
         System.out.println("Seller " + seller1.getName() + " was added!");
+
+        System.out.println("\nTEST UPDATE SELLER");
+        seller = sellerDao.findById(2);
+        seller.setName("Roger");
+        sellerDao.update(seller);
+        System.out.println("SELLER UPDATED!");
     }
 }
