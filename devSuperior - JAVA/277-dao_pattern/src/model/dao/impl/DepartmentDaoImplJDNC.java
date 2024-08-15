@@ -47,10 +47,7 @@ public class DepartmentDaoImplJDNC implements GenericDao<Department> {
             rs = st.executeQuery();
 
             if (rs.next()) {
-                Department department = new Department();
-                department.setName(rs.getString("Name"));
-                department.setId(rs.getInt("Id"));
-                return department;
+                return createDepartment(rs);
             }
             return null;
         } catch (SQLException e) {
@@ -59,6 +56,13 @@ public class DepartmentDaoImplJDNC implements GenericDao<Department> {
             DB.closeResultSet(rs);
             DB.closeStatement(st);
         }
+    }
+
+    private Department createDepartment(ResultSet rs) throws SQLException {
+        Department department = new Department();
+        department.setName(rs.getString("Name"));
+        department.setId(rs.getInt("Id"));
+        return department;
     }
 
     @Override
