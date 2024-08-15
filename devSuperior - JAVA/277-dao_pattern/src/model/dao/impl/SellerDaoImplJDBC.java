@@ -1,7 +1,7 @@
 package model.dao.impl;
 
 import entities.Seller;
-import model.GenericDao;
+import model.dao.GenericDao;
 
 import java.util.Collections;
 import java.util.List;
