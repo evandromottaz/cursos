@@ -6,10 +6,7 @@ import entities.Department;
 import entities.Seller;
 import model.dao.SellerDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +20,44 @@ public class SellerDaoImplJDBC implements SellerDao {
     }
 
     @Override
-    public void insert(Seller e) {
+    public void insert(Seller seller) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
 
+        try {
+            st = conn.prepareStatement(
+                    "INSERT INTO seller "
+                            + "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
+                            + "VALUES (?, ?, ?, ?, ?)",
+                    Statement.RETURN_GENERATED_KEYS
+            );
+
+            st.setString(1, seller.getName());
+            st.setString(2, seller.getEmail());
+            st.setDate(3, new Date(seller.getBirthDate().getTime()));
+            st.setDouble(4, seller.getBaseSalary());
+            st.setInt(5, seller.getDepartment().getId());
+
+            int rowsAffected = st.executeUpdate();
+            boolean isAdd = rowsAffected > 0;
+
+            if (isAdd) {
+                rs = st.getGeneratedKeys();
+
+                if (rs.next()) {
+                    int id = rs.getInt(1);
+                    seller.setId(id);
+                }
+                return;
+            }
+
+            throw new DbException("Unexpected Error: Is not possible to insert seller: " + seller.getName());
+        } catch (SQLException ex) {
+            throw new DbException(ex.getMessage());
+        } finally {
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
     }
 
     @Override
@@ -69,7 +102,7 @@ public class SellerDaoImplJDBC implements SellerDao {
         seller.setId(rs.getInt("Id"));
         seller.setName(rs.getString("Name"));
         seller.setEmail(rs.getString("Email"));
-        seller.setBrithDate(rs.getDate("BirthDate"));
+        seller.setBirthDate(rs.getDate("BirthDate"));
         seller.setBaseSalary(rs.getDouble("BaseSalary"));
         seller.setDepartment(department);
         return seller;
