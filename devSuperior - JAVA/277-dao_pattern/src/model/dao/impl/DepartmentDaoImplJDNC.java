@@ -6,7 +6,7 @@ import entities.Department;
 import model.dao.GenericDao;
 
 import java.sql.*;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentDaoImplJDNC implements GenericDao<Department> {
@@ -118,6 +118,28 @@ public class DepartmentDaoImplJDNC implements GenericDao<Department> {
 
     @Override
     public List<Department> findAll() {
-        return Collections.emptyList();
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        List<Department> departments = new ArrayList<>();
+
+        String QUERY = "SELECT * FROM department";
+
+        try {
+            st = conn.prepareStatement(QUERY);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                Department dep = createDepartment(rs);
+                departments.add(dep);
+            }
+
+            return departments;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(st);
+        }
     }
 }
