@@ -49,8 +49,22 @@ public class DepartmentDaoImplJDNC implements GenericDao<Department> {
     }
 
     @Override
-    public void update(Department e) {
+    public void update(Department department) {
+        PreparedStatement st = null;
 
+        String QUERY = "UPDATE department SET Name = ? WHERE Id = ?";
+
+        try {
+            st = conn.prepareStatement(QUERY);
+
+            st.setString(1, department.getName());
+            st.setInt(2, department.getId());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override

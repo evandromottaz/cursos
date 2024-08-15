@@ -15,5 +15,11 @@ public class Program2 {
         Department department = new Department(null, "Movies");
         departmentDao.insert(department);
         System.out.println(department.getName() + " was added!");
+
+        System.out.println("\bTEST UPDATE DEPARTMENT");
+        department = departmentDao.findById(5);
+        department.setName("Cars");
+        departmentDao.update(department);
+        System.out.println(department.getName() + " was updated!");
     }
 }
