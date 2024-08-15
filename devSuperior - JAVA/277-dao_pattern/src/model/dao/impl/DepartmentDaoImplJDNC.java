@@ -5,10 +5,7 @@ import db.DbException;
 import entities.Department;
 import model.dao.GenericDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,8 +17,35 @@ public class DepartmentDaoImplJDNC implements GenericDao<Department> {
     }
 
     @Override
-    public void insert(Department e) {
+    public void insert(Department department) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
 
+        String QUERY = "INSERT INTO department (Name) VALUES (?)";
+
+        try {
+            st = conn.prepareStatement(QUERY, Statement.RETURN_GENERATED_KEYS);
+            st.setString(1, department.getName());
+
+            int row = st.executeUpdate();
+            boolean isAdd = row > 0;
+
+            if (isAdd) {
+                rs = st.getGeneratedKeys();
+
+                if (rs.next()) {
+                    department.setId(rs.getInt(1));
+                }
+                return;
+            }
+
+            throw new DbException("Unexpected Error: Is not possible to insert department: " + department.getName());
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(rs);
+            DB.closeStatement(st);
+        }
     }
 
     @Override
