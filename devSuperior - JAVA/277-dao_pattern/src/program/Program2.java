@@ -21,5 +21,8 @@ public class Program2 {
         department.setName("Cars");
         departmentDao.update(department);
         System.out.println(department.getName() + " was updated!");
+
+        System.out.println("\bTEST DELETE DEPARTMENT");
+        departmentDao.deleteById(6);
     }
 }

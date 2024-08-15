@@ -69,7 +69,20 @@ public class DepartmentDaoImplJDNC implements GenericDao<Department> {
 
     @Override
     public void deleteById(Integer id) {
+        PreparedStatement st = null;
 
+        String QUERY = "DELETE FROM department WHERE Id = ?";
+
+        try {
+            st = conn.prepareStatement(QUERY);
+
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
