@@ -1,6 +1,6 @@
-import { httpResponse } from '../helpers/http-response'
+const { httpResponse } = require('../helpers/http-response')
 
-export function createLoginRouter() {
+function createLoginRouter() {
     const route = (httpRequest) => {
         if (!httpRequest || !httpRequest.body) return httpResponse.serverError()
 
@@ -13,3 +13,5 @@ export function createLoginRouter() {
 
     return { route }
 }
+
+module.exports = { createLoginRouter }

@@ -1,6 +1,6 @@
-import { MissingParamError } from './missing-param-error'
+const { MissingParamError } = require('./missing-param-error')
 
-export const httpResponse = {
+const httpResponse = {
     badRequest: (errorMessage) => ({
         statusCode: 400,
         body: new MissingParamError(errorMessage),
@@ -9,3 +9,5 @@ export const httpResponse = {
         statusCode: 500,
     }),
 }
+
+module.exports = { httpResponse }
