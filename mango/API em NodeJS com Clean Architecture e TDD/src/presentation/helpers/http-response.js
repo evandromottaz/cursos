@@ -8,4 +8,7 @@ module.exports = {
     serverError: () => ({
         statusCode: 500,
     }),
+    unauthorized: () => ({
+        statusCode: 401,
+    }),
 }
