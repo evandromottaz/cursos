@@ -1,6 +1,6 @@
 const { MissingParamError } = require('./missing-param-error')
 
-const httpResponse = {
+module.exports = {
     badRequest: (errorMessage) => ({
         statusCode: 400,
         body: new MissingParamError(errorMessage),
@@ -9,5 +9,3 @@ const httpResponse = {
         statusCode: 500,
     }),
 }
-
-module.exports = { httpResponse }

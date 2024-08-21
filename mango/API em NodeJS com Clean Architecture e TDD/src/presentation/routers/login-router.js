@@ -1,4 +1,4 @@
-const { httpResponse } = require('../helpers/http-response')
+const httpResponse = require('../helpers/http-response')
 
 module.exports = class LoginRouter {
     constructor(authUseCase) {
