@@ -1,16 +1,24 @@
+const httpResponse = {
+    badRequest: () => ({
+        statusCode: 400,
+    }),
+    serverError: () => ({
+        statusCode: 500,
+    }),
+}
+
 function createLoginRouter() {
     const route = (httpRequest) => {
-        if (!httpRequest) return { statusCode: 500 }
+        if (!httpRequest) return httpResponse.serverError()
 
-        if (!httpRequest.body) return { statusCode: 500 }
+        if (!httpRequest.body) return httpResponse.serverError()
 
-        return {
-            statusCode: 400,
-        }
+        return httpResponse.badRequest()
     }
 
     return { route }
 }
+
 describe('first', () => {
     test('Should return 500 if no httpRequest is proved', () => {
         const sut = createLoginRouter()
