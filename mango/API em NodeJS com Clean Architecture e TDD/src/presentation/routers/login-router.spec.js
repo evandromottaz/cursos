@@ -1,4 +1,5 @@
 const MissingParamError = require('../helpers/missing-param-error')
+const UnauthorizedError = require('../helpers/unauthorized-error')
 const LoginRouter = require('./login-router')
 
 const makeSut = () => {
@@ -68,5 +69,6 @@ describe('first', () => {
         }
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(401)
+        expect(httpResponse.body).toEqual(new UnauthorizedError())
     })
 })
