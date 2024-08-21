@@ -1,4 +1,4 @@
-const { MissingParamError } = require('../helpers/missing-param-error')
+const MissingParamError = require('../helpers/missing-param-error')
 const LoginRouter = require('./login-router')
 
 const makeSut = () => {

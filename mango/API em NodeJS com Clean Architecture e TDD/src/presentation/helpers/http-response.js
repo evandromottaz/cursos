@@ -1,4 +1,4 @@
-const { MissingParamError } = require('./missing-param-error')
+const MissingParamError = require('./missing-param-error')
 const UnauthorizedError = require('./unauthorized-error')
 
 module.exports = {
