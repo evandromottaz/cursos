@@ -1,35 +1,5 @@
-const httpResponse = {
-    badRequest: (errorMessage) => ({
-        statusCode: 400,
-        body: new MissingParamError(errorMessage),
-    }),
-    serverError: () => ({
-        statusCode: 500,
-    }),
-}
-
-class MissingParamError extends Error {
-    constructor(name) {
-        super(`Missing param: ${name}`)
-        this.name = 'MissingParamError'
-    }
-}
-
-function createLoginRouter() {
-    const route = (httpRequest) => {
-        if (!httpRequest) return httpResponse.serverError()
-
-        if (!httpRequest.body) return httpResponse.serverError()
-
-        if (!httpRequest.body.email) return httpResponse.badRequest('email')
-
-        if (!httpRequest.body.password) return httpResponse.badRequest('password')
-
-        return httpResponse.badRequest()
-    }
-
-    return { route }
-}
+import { MissingParamError } from '../helpers/missing-param-error'
+import { createLoginRouter } from './login-router'
 
 describe('first', () => {
     test('Should return 500 if no httpRequest is proved', () => {
