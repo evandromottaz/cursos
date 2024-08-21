@@ -1,12 +1,16 @@
 function createLoginRouter() {
-    const route = () => ({
-        statusCode: 400,
-    })
+    const route = (httpRequest) => {
+        if (!httpRequest) return { statusCode: 500 }
+
+        return {
+            statusCode: 400,
+        }
+    }
 
     return { route }
 }
 describe('first', () => {
-    test('should return 400 if no email is proved', () => {
+    test('Should return 400 if no email is proved', () => {
         const sut = createLoginRouter()
         const httpRequest = {
             body: {
@@ -16,7 +20,7 @@ describe('first', () => {
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(400)
     })
-    test('should return 400 if no password is proved', () => {
+    test('Should return 400 if no password is proved', () => {
         const sut = createLoginRouter()
         const httpRequest = {
             body: {
@@ -25,5 +29,10 @@ describe('first', () => {
         }
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(400)
+    })
+    test('Should return 500 if no httpRequest is proved', () => {
+        const sut = createLoginRouter()
+        const httpResponse = sut.route()
+        expect(httpResponse.statusCode).toBe(500)
     })
 })
