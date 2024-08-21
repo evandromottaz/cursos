@@ -2,9 +2,7 @@ import { httpResponse } from '../helpers/http-response'
 
 export function createLoginRouter() {
     const route = (httpRequest) => {
-        if (!httpRequest) return httpResponse.serverError()
-
-        if (!httpRequest.body) return httpResponse.serverError()
+        if (!httpRequest || !httpRequest.body) return httpResponse.serverError()
 
         if (!httpRequest.body.email) return httpResponse.badRequest('email')
 
