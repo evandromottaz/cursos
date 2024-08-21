@@ -1,11 +1,15 @@
 const { MissingParamError } = require('../helpers/missing-param-error')
-const { createLoginRouter } = require('./login-router')
+const LoginRouter = require('./login-router')
 
 const makeSut = () => {
-    const sut = createLoginRouter()
-    return {
-        sut,
+    class AuthUseCase {
+        auth(email) {
+            this.email = email
+        }
     }
+    const authUseCase = new AuthUseCase()
+    const sut = new LoginRouter(authUseCase)
+    return { sut, authUseCase }
 }
 
 describe('first', () => {
@@ -40,5 +44,16 @@ describe('first', () => {
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(400)
         expect(httpResponse.body).toEqual(new MissingParamError('password'))
+    })
+    test('Should call AuthUseCase with correct params', () => {
+        const { sut, authUseCase } = makeSut()
+        const httpRequest = {
+            body: {
+                email: 'any_email@gmail.com',
+                password: 'any_password',
+            },
+        }
+        sut.route(httpRequest)
+        expect(authUseCase.email).toBe(httpRequest.body.email)
     })
 })
