@@ -1,5 +1,5 @@
 import InvalidParamError from '../helpers/invalid-param-error.js'
-import MissingParamError from '../helpers/missing-param-error.js'
+import MissingParamError from '../../utils/errors/missing-param-error.js'
 import ServerError from '../helpers/server-error.js'
 import UnauthorizedError from '../helpers/unauthorized-error.js'
 import LoginRouter from './login-router.js'

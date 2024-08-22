@@ -1,4 +1,4 @@
-import MissingParamError from '../../presentation/helpers/missing-param-error'
+import MissingParamError from '../../utils/errors/missing-param-error'
 
 class AuthUseCase {
     async auth(email, password) {
