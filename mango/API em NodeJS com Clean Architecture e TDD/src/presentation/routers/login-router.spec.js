@@ -148,7 +148,7 @@ describe('first', () => {
     })
     test('Should return 500 when AuthUseCase throws', async () => {
         const authUseCaseSpy = makeAuthUseCaseWithError()
-        const sut = new LoginRouter(authUseCaseSpy)
+        const sut = new LoginRouter({ authUseCaseSpy })
         const httpResponse = await sut.route()
         expect(httpResponse.statusCode).toBe(500)
     })
@@ -164,5 +164,17 @@ describe('first', () => {
         const httpResponse = await sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(400)
         expect(httpResponse.body).toEqual(new InvalidParamError('email'))
+    })
+    test('Should return 500 when EmailValidator is no provided', async () => {
+        const authUseCaseSpy = makeAuthUseCase()
+        const sut = new LoginRouter({ authUseCaseSpy })
+        const httpResponse = await sut.route()
+        expect(httpResponse.statusCode).toBe(500)
+    })
+    test('Should return 500 when EmailValidator has no isValid method', async () => {
+        const authUseCaseSpy = makeAuthUseCase()
+        const sut = new LoginRouter({ authUseCase: authUseCaseSpy, emailValidator: {} })
+        const httpResponse = await sut.route()
+        expect(httpResponse.statusCode).toBe(500)
     })
 })
