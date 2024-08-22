@@ -1,7 +1,7 @@
-const UnauthorizedError = require('./unauthorized-error')
-const ServerError = require('./server-error')
+import UnauthorizedError from './unauthorized-error.js'
+import ServerError from './server-error.js'
 
-module.exports = {
+export default {
     badRequest: (error) => ({
         statusCode: 400,
         body: error,

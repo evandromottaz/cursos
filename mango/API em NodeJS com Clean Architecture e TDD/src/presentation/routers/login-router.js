@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
-const httpResponse = require('../helpers/http-response')
-const InvalidParamError = require('../helpers/invalid-param-error')
-const MissingParamError = require('../helpers/missing-param-error')
-module.exports = class LoginRouter {
+import httpResponse from '../helpers/http-response.js'
+
+import InvalidParamError from '../helpers/invalid-param-error.js'
+import MissingParamError from '../helpers/missing-param-error.js'
+
+export default class LoginRouter {
     constructor({ authUseCase, emailValidator } = {}) {
         this.authUseCase = authUseCase
         this.emailValidator = emailValidator
