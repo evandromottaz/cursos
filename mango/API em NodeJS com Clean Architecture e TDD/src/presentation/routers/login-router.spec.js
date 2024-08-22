@@ -1,3 +1,4 @@
+const InvalidParamError = require('../helpers/invalid-param-error')
 const MissingParamError = require('../helpers/missing-param-error')
 const ServerError = require('../helpers/server-error')
 const UnauthorizedError = require('../helpers/unauthorized-error')
@@ -20,14 +21,33 @@ const makeAuthUseCase = () => {
             return this.accessToken
         }
     }
-    return new AuthUseCaseSpy()
+    const authUseCaseSpy = new AuthUseCaseSpy()
+    authUseCaseSpy.accessToken = 'valid_token'
+    return authUseCaseSpy
+}
+
+const makeEmailValidator = () => {
+    class EmailValidatorSpy {
+        isValid(email) {
+            this.email = email
+            return this.isEmailValid
+        }
+    }
+
+    const emailValidatorSpy = new EmailValidatorSpy()
+    emailValidatorSpy.isEmailValid = true
+    return emailValidatorSpy
 }
 
 const makeSut = () => {
     const authUseCaseSpy = makeAuthUseCase()
-    authUseCaseSpy.accessToken = 'valid_token'
-    const sut = new LoginRouter(authUseCaseSpy)
-    return { sut, authUseCaseSpy }
+    const emailValidatorSpy = makeEmailValidator()
+    const sut = new LoginRouter({
+        authUseCase: authUseCaseSpy,
+        emailValidator: emailValidatorSpy,
+    })
+
+    return { sut, authUseCaseSpy, emailValidatorSpy }
 }
 
 describe('first', () => {
@@ -131,5 +151,18 @@ describe('first', () => {
         const sut = new LoginRouter(authUseCaseSpy)
         const httpResponse = await sut.route()
         expect(httpResponse.statusCode).toBe(500)
+    })
+    test('Should return 400 if invalid email is proved', async () => {
+        const { sut, emailValidatorSpy } = makeSut()
+        emailValidatorSpy.isEmailValid = false
+        const httpRequest = {
+            body: {
+                email: 'invalid_email@gmail.com',
+                password: 'any_password',
+            },
+        }
+        const httpResponse = await sut.route(httpRequest)
+        expect(httpResponse.statusCode).toBe(400)
+        expect(httpResponse.body).toEqual(new InvalidParamError('email'))
     })
 })
