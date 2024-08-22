@@ -10,15 +10,22 @@ const makeLoadUserEmailRepository = () => {
 }
 
 const makeSut = () => {
+    class EncrypterSpy {
+        async compare(value, hashedValue) {
+            this.value = value
+            this.hashedValue = hashedValue
+        }
+    }
+    const encrypterSpy = new EncrypterSpy()
     const loadUserEmailRepositorySpy = makeLoadUserEmailRepository()
-    loadUserEmailRepositorySpy.user = {}
-    const sut = new AuthUseCase(loadUserEmailRepositorySpy)
-    return { sut, loadUserEmailRepositorySpy }
+    loadUserEmailRepositorySpy.user = { password: 'hashed_password' }
+    const sut = new AuthUseCase(loadUserEmailRepositorySpy, encrypterSpy)
+    return { sut, loadUserEmailRepositorySpy, encrypterSpy }
 }
 class AuthUseCase {
-    constructor(loadUserEmailRepository) {
+    constructor(loadUserEmailRepository, encrypter) {
         this.loadUserEmailRepository = loadUserEmailRepository
-        console.log({ loadUserEmailRepository })
+        this.encrypter = encrypter
     }
 
     async auth(email, password) {
@@ -29,6 +36,7 @@ class AuthUseCase {
         if (!user) {
             return null
         }
+        await this.encrypter.compare(password, user.password)
     }
 }
 describe('AuthUseCase', () => {
@@ -57,5 +65,11 @@ describe('AuthUseCase', () => {
         loadUserEmailRepositorySpy.user = null
         const accessToken = await sut.auth('invalid_email@gmail.com', 'any_password')
         expect(accessToken).toBeNull()
+    })
+    test('Should call Encrypter with correct values', async () => {
+        const { sut, loadUserEmailRepositorySpy, encrypterSpy } = makeSut()
+        await sut.auth('valid_email@gmail.com', 'any_password')
+        expect(encrypterSpy.value).toBe('any_password')
+        expect(encrypterSpy.hashedValue).toBe(loadUserEmailRepositorySpy.user.password)
     })
 })
