@@ -5,6 +5,9 @@ class AuthUseCase {
         if (!email) {
             throw new MissingParamError('email')
         }
+        if (!password) {
+            throw new MissingParamError('password')
+        }
         this.email = email
         this.password = password
         return this.accessToken
@@ -21,5 +24,10 @@ describe('AuthUseCase', () => {
         const sut = new AuthUseCase()
         const promise = sut.auth()
         expect(promise).rejects.toThrow(new MissingParamError('email'))
+    })
+    test('Should throw if no password is provided', async () => {
+        const sut = new AuthUseCase()
+        const promise = sut.auth('any_email')
+        expect(promise).rejects.toThrow(new MissingParamError('password'))
     })
 })
