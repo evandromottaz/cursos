@@ -1,0 +1,25 @@
+{
+  "name": "api-em-nodejs-com-clean-architecture-e-tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "@eslint/js": "^9.9.0",
+    "@types/jest": "^29.5.12",
+    "eslint": "^9.9.0",
+    "eslint-plugin-jest": "^28.8.0",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "validator": "^13.12.0"
+  }
+}
