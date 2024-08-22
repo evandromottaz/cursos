@@ -9,7 +9,7 @@ const makeLoadUserEmailRepository = () => {
     return new LoadUserEmailRepository()
 }
 
-const makeSut = () => {
+const makeEncrypter = () => {
     class EncrypterSpy {
         async compare(value, hashedValue) {
             this.value = value
@@ -17,6 +17,12 @@ const makeSut = () => {
         }
     }
     const encrypterSpy = new EncrypterSpy()
+    encrypterSpy.isValid = true
+    return encrypterSpy
+}
+
+const makeSut = () => {
+    const encrypterSpy = makeEncrypter()
     const loadUserEmailRepositorySpy = makeLoadUserEmailRepository()
     loadUserEmailRepositorySpy.user = { password: 'hashed_password' }
     const sut = new AuthUseCase(loadUserEmailRepositorySpy, encrypterSpy)
@@ -36,7 +42,10 @@ class AuthUseCase {
         if (!user) {
             return null
         }
-        await this.encrypter.compare(password, user.password)
+        const isValid = await this.encrypter.compare(password, user.password)
+        if (!isValid) {
+            return null
+        }
     }
 }
 describe('AuthUseCase', () => {
@@ -71,5 +80,11 @@ describe('AuthUseCase', () => {
         await sut.auth('valid_email@gmail.com', 'any_password')
         expect(encrypterSpy.value).toBe('any_password')
         expect(encrypterSpy.hashedValue).toBe(loadUserEmailRepositorySpy.user.password)
+    })
+    test('Should return null when invalid email is provided', async () => {
+        const { sut, encrypterSpy } = makeSut()
+        encrypterSpy.isValid = false
+        const accessToken = await sut.auth('valid_email@gmail.com', 'any_password')
+        expect(accessToken).toBeNull()
     })
 })
