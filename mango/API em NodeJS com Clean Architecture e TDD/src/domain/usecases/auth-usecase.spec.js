@@ -62,7 +62,7 @@ class AuthUseCase {
         if (!isValid) {
             return null
         }
-        await this.tokenGenerator.generate(user.id)
+        return await this.tokenGenerator.generate(user.id)
     }
 }
 describe('AuthUseCase', () => {
@@ -108,5 +108,11 @@ describe('AuthUseCase', () => {
         const { sut, tokenGeneratorSpy, loadUserEmailRepositorySpy } = makeSut()
         await sut.auth('valid_email@gmail.com', 'valid_password')
         expect(tokenGeneratorSpy.userId).toBe(loadUserEmailRepositorySpy.user.id)
+    })
+    test('Should return accessToken when correct credentials are provided', async () => {
+        const { sut, tokenGeneratorSpy } = makeSut()
+        const accessToken = await sut.auth('valid_email@gmail.com', 'valid_password')
+        expect(accessToken).toBe(tokenGeneratorSpy.accessToken)
+        expect(accessToken).toBeTruthy()
     })
 })
