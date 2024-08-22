@@ -13,4 +13,8 @@ module.exports = {
         statusCode: 401,
         body: new UnauthorizedError(),
     }),
+    ok: (accessToken) => ({
+        statusCode: 200,
+        body: { accessToken },
+    }),
 }
