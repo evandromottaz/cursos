@@ -59,7 +59,7 @@ const makeSut = () => {
     return { sut, authUseCaseSpy, emailValidatorSpy }
 }
 
-describe('first', () => {
+describe('Login Router', () => {
     test('Should return 500 if no httpRequest is proved', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.route()
