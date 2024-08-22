@@ -1,16 +1,14 @@
-const validator = {
+import EmailValidator from './email-validator.js'
+import validator from 'validator'
+
+jest.mock('validator', () => ({
     isEmailValid: true,
+
     isEmail(email) {
         this.email = email
         return this.isEmailValid
     },
-}
-
-class EmailValidator {
-    isValid(email) {
-        return validator.isEmail(email)
-    }
-}
+}))
 
 describe('Email Validator', () => {
     test('Should return true if validator returns true', () => {
