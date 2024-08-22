@@ -3,6 +3,7 @@ const makeLoadUserEmailRepository = () => {
         async load(email, password) {
             this.email = email
             this.password = password
+            return this.user
         }
     }
     return new LoadUserEmailRepository()
@@ -10,6 +11,7 @@ const makeLoadUserEmailRepository = () => {
 
 const makeSut = () => {
     const loadUserEmailRepositorySpy = makeLoadUserEmailRepository()
+    loadUserEmailRepositorySpy.user = {}
     const sut = new AuthUseCase(loadUserEmailRepositorySpy)
     return { sut, loadUserEmailRepositorySpy }
 }
@@ -51,7 +53,8 @@ describe('AuthUseCase', () => {
         await expect(promise).rejects.toThrow()
     })
     test('Should return null when LoadUserEmailRepository return null', async () => {
-        const { sut } = makeSut()
+        const { sut, loadUserEmailRepositorySpy } = makeSut()
+        loadUserEmailRepositorySpy.user = null
         const accessToken = await sut.auth('invalid_email@gmail.com', 'any_password')
         expect(accessToken).toBeNull()
     })
