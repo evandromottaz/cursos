@@ -23,7 +23,10 @@ class AuthUseCase {
         if (!email || !password || !this.loadUserEmailRepository || !this.loadUserEmailRepository.load) {
             throw new Error()
         }
-        await this.loadUserEmailRepository.load(email, password)
+        const user = await this.loadUserEmailRepository.load(email, password)
+        if (!user) {
+            return null
+        }
     }
 }
 describe('AuthUseCase', () => {
@@ -46,5 +49,10 @@ describe('AuthUseCase', () => {
         const sut = new AuthUseCase()
         const promise = sut.auth('any_email@gmail.com', 'any_password')
         await expect(promise).rejects.toThrow()
+    })
+    test('Should return null when LoadUserEmailRepository return null', async () => {
+        const { sut } = makeSut()
+        const accessToken = await sut.auth('invalid_email@gmail.com', 'any_password')
+        expect(accessToken).toBeNull()
     })
 })
