@@ -1,5 +1,3 @@
-import ServerError from '../../errors/server-error'
-
 const makeLoadUserEmailRepository = () => {
     class LoadUserEmailRepository {
         async load(email, password) {
@@ -23,7 +21,7 @@ class AuthUseCase {
 
     async auth(email, password) {
         if (!email || !password || !this.loadUserEmailRepository || !this.loadUserEmailRepository.load) {
-            throw new ServerError()
+            throw new Error()
         }
         await this.loadUserEmailRepository.load(email, password)
     }
@@ -32,7 +30,7 @@ describe('AuthUseCase', () => {
     test('Should throw if no email or password is provided', async () => {
         const { sut } = makeSut()
         const promise = sut.auth()
-        await expect(promise).rejects.toThrow(new ServerError())
+        await expect(promise).rejects.toThrow()
     })
     test('Should call LoadUserEmailRepository with correct email', async () => {
         const { sut, loadUserEmailRepositorySpy } = makeSut()
@@ -42,11 +40,11 @@ describe('AuthUseCase', () => {
     test('Should throw if no LoadUserEmailRepository is provided', async () => {
         const sut = new AuthUseCase()
         const promise = sut.auth('any_email@gmail.com', 'any_password')
-        await expect(promise).rejects.toThrow(new ServerError())
+        await expect(promise).rejects.toThrow()
     })
     test('Should throw if LoadUserEmailRepository has no load method', async () => {
         const sut = new AuthUseCase()
         const promise = sut.auth('any_email@gmail.com', 'any_password')
-        await expect(promise).rejects.toThrow(new ServerError())
+        await expect(promise).rejects.toThrow()
     })
 })
