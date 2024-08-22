@@ -1,5 +1,6 @@
 const MissingParamError = require('./missing-param-error')
 const UnauthorizedError = require('./unauthorized-error')
+const ServerError = require('./server-error')
 
 module.exports = {
     badRequest: (errorMessage) => ({
@@ -8,6 +9,7 @@ module.exports = {
     }),
     serverError: () => ({
         statusCode: 500,
+        body: new ServerError(),
     }),
     unauthorized: () => ({
         statusCode: 401,

@@ -1,4 +1,5 @@
 const MissingParamError = require('../helpers/missing-param-error')
+const ServerError = require('../helpers/server-error')
 const UnauthorizedError = require('../helpers/unauthorized-error')
 const LoginRouter = require('./login-router')
 
@@ -21,11 +22,13 @@ describe('first', () => {
         const { sut } = makeSut()
         const httpResponse = sut.route()
         expect(httpResponse.statusCode).toBe(500)
+        expect(httpResponse.body).toEqual(new ServerError())
     })
     test('Should return 500 if httpRequest is invalid', () => {
         const { sut } = makeSut()
         const httpResponse = sut.route({})
         expect(httpResponse.statusCode).toBe(500)
+        expect(httpResponse.body).toEqual(new ServerError())
     })
     test('Should return 400 if no email is proved', () => {
         const { sut } = makeSut()
@@ -84,6 +87,7 @@ describe('first', () => {
         }
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(500)
+        expect(httpResponse.body).toEqual(new ServerError())
     })
     test('Should return 500 when AuthUseCase has no auth method', () => {
         const sut = new LoginRouter({})
@@ -95,6 +99,7 @@ describe('first', () => {
         }
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(500)
+        expect(httpResponse.body).toEqual(new ServerError())
     })
     test('Should return 200 valid credentials are provided', () => {
         const { sut, authUseCaseSpy } = makeSut()
