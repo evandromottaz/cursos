@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --silent --watch --passWithNoTests --noStackTrace"
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "",
