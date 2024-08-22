@@ -3,7 +3,16 @@ const ServerError = require('../helpers/server-error')
 const UnauthorizedError = require('../helpers/unauthorized-error')
 const LoginRouter = require('./login-router')
 
-const makeSut = () => {
+const makeAuthUseCaseWithError = () => {
+    class AuthUseCaseSpy {
+        auth() {
+            throw new Error()
+        }
+    }
+    return new AuthUseCaseSpy()
+}
+
+const makeAuthUseCase = () => {
     class AuthUseCaseSpy {
         auth(email, password) {
             this.email = email
@@ -11,7 +20,11 @@ const makeSut = () => {
             return this.accessToken
         }
     }
-    const authUseCaseSpy = new AuthUseCaseSpy()
+    return new AuthUseCaseSpy()
+}
+
+const makeSut = () => {
+    const authUseCaseSpy = makeAuthUseCase()
     authUseCaseSpy.accessToken = 'valid_token'
     const sut = new LoginRouter(authUseCaseSpy)
     return { sut, authUseCaseSpy }
@@ -112,5 +125,11 @@ describe('first', () => {
         const httpResponse = sut.route(httpRequest)
         expect(httpResponse.statusCode).toBe(200)
         expect(httpResponse.body.accessToken).toEqual(authUseCaseSpy.accessToken)
+    })
+    test('Should return 500 when AuthUseCase throws', () => {
+        const authUseCaseSpy = makeAuthUseCaseWithError()
+        const sut = new LoginRouter(authUseCaseSpy)
+        const httpResponse = sut.route()
+        expect(httpResponse.statusCode).toBe(500)
     })
 })
