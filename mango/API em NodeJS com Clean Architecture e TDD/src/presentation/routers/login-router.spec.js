@@ -193,4 +193,15 @@ describe('first', () => {
         const httpResponse = await sut.route()
         expect(httpResponse.statusCode).toBe(500)
     })
+    test('Should call EmailValidator with correct email', () => {
+        const { sut, emailValidatorSpy } = makeSut()
+        const httpRequest = {
+            body: {
+                email: 'valid_email@gmail.com',
+                password: 'any_password',
+            },
+        }
+        sut.route(httpRequest)
+        expect(emailValidatorSpy.email).toBe(httpRequest.body.email)
+    })
 })
