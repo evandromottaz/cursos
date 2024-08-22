@@ -55,14 +55,11 @@ class AuthUseCase {
             throw new Error()
         }
         const user = await this.loadUserEmailRepository.load(email, password)
-        if (!user) {
-            return null
+        const isValid = user && (await this.encrypter.compare(password, user.password))
+        if (isValid) {
+            return await this.tokenGenerator.generate(user.id)
         }
-        const isValid = await this.encrypter.compare(password, user.password)
-        if (!isValid) {
-            return null
-        }
-        return await this.tokenGenerator.generate(user.id)
+        return null
     }
 }
 describe('AuthUseCase', () => {
