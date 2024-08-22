@@ -1,5 +1,10 @@
+import MissingParamError from '../../presentation/helpers/missing-param-error'
+
 class AuthUseCase {
     async auth(email, password) {
+        if (!email) {
+            throw new MissingParamError('email')
+        }
         this.email = email
         this.password = password
         return this.accessToken
@@ -7,9 +12,14 @@ class AuthUseCase {
 }
 describe('AuthUseCase', () => {
     test('Should receive email and password', async () => {
-        const authUseCase = new AuthUseCase()
-        await authUseCase.auth('any_email', 'any_password')
-        expect(authUseCase.email).toBe('any_email')
-        expect(authUseCase.password).toBe('any_password')
+        const sut = new AuthUseCase()
+        await sut.auth('any_email', 'any_password')
+        expect(sut.email).toBe('any_email')
+        expect(sut.password).toBe('any_password')
+    })
+    test('Should throw if no email is provided', async () => {
+        const sut = new AuthUseCase()
+        const promise = sut.auth()
+        expect(promise).rejects.toThrow()
     })
 })
