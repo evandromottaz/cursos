@@ -1,0 +1,28 @@
+POST http://localhost:3333/videos
+Content-Type: application/json
+
+{
+    "title":"Aula 2 - NodeJS",
+    "description":"Aprendendo ",
+    "duration": 150
+}
+
+###
+
+GET http://localhost:3333/videos
+
+###
+
+PUT http://localhost:3333/video/9e0497fe-e5c1-44ef-88b5-cfed32f1386b
+Content-Type: application/json
+
+{
+    "title":"Aula 11",
+    "description":"Aprendendo Qualquer coisa",
+    "duration": 120
+}
+
+###
+
+DELETE  http://localhost:3333/video/9e0497fe-e5c1-44ef-88b5-cfed32f1386b
+Content-Type: application/json
