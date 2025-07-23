@@ -199,7 +199,7 @@ AFTER UPDATE ON users
 BEGIN
 	UPDATE users 
 	SET updated_at = datetime('now', '-3 hours')
-	WHERE id = OLD.id;
+	WHERE id = NEW.id;
 END;
 
 -- 8 DELETE
