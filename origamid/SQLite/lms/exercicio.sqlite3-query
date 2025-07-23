@@ -75,7 +75,7 @@ CREATE TABLE resets (
 
 -- 3 INSERT
 
-INSERT INTO users (nome, email, password) VALUES
+INSERT OR IGNORE INTO users (nome, email, password) VALUES
 ('Ana Silva', 'ana@email.com', 'senha123'),
 ('Bruno Lima', 'bruno@email.com', 'senha123'),
 ('Carlos Souza', 'carlos@email.com', 'senha123'),
@@ -87,7 +87,7 @@ INSERT INTO users (nome, email, password) VALUES
 ('Igor Nunes', 'igor@email.com', 'senha123'),
 ('Julia Castro', 'julia@email.com', 'senha123');
 
-INSERT INTO courses (slug, title, aulas, horas) VALUES
+INSERT OR IGNORE INTO courses (slug, title, aulas, horas) VALUES
 ('html-basico', 'HTML Básico', 4, 2),
 ('css-fundamentos', 'CSS Fundamentos', 4, 3),
 ('js-intro', 'JavaScript Introdução', 4, 4),
@@ -95,7 +95,7 @@ INSERT INTO courses (slug, title, aulas, horas) VALUES
 ('react-basico', 'React Básico', 4, 5);
 
 
-INSERT INTO lessons (slug, course_id, title) VALUES
+INSERT OR IGNORE INTO lessons (slug, course_id, title) VALUES
 ('introducao-html', 1, 'Introdução ao HTML'),
 ('tags-basicas', 1, 'Tags Básicas'),
 ('listas-e-links', 1, 'Listas e Links'),
@@ -121,14 +121,14 @@ INSERT INTO lessons (slug, course_id, title) VALUES
 ('props-state', 5, 'Props e State'),
 ('eventos', 5, 'Eventos');
 
-INSERT or IGNORE INTO lessons_completed (user_id, course_id, lesson_id)
+INSERT OR IGNORE INTO lessons_completed (user_id, course_id, lesson_id)
 SELECT u.id, 1, 1 FROM users AS u WHERE u.email = 'bruno@email.com'
 UNION ALL
 SELECT u.id, 1, 2 FROM users AS u WHERE u.email = 'igor@email.com'
 UNION ALL
 SELECT u.id, 2, 5 FROM users AS u WHERE u.email = 'eduardo@email.com';
 
-INSERT INTO certificates (user_id, course_id)
+INSERT OR IGNORE INTO certificates (user_id, course_id)
 SELECT u.id, 1 FROM users AS u WHERE u.email = 'bruno@email.com'
 UNION ALL
 SELECT u.id, 2 FROM users AS u WHERE u.email = 'igor@email.com'
