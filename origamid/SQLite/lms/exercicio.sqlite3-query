@@ -187,10 +187,8 @@ SELECT * FROM view_users_lessons_completed WHERE user_email = 'du@email.com';
 UPDATE users SET email = 'edu@email.com' WHERE email = 'du@email.com';
 
 UPDATE sessions
-SET expires_at = datetime(expires_at, '-2 days')
-WHERE user_id = (SELECT id FROM users WHERE email = 'bruno@email.com');
-
-UPDATE users SET email = 'dani2025@email.com' WHERE email = 'dani@email.com';
+SET expires_at = datetime(expires_at, '+2 days')
+WHERE id = '4b266c0cf33e9e12385c92247ebc0758';
 
 -- 7 TRIGGER
 
