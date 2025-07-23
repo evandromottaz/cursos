@@ -22,7 +22,7 @@ CREATE TABLE users (
 	email TEXT NOT NULL UNIQUE COLLATE NOCASE, 
 	password TEXT NOT NULL,
 	created TEXT NOT NULL DEFAULT (datetime('now', '-3 hours')),
-	updated_at TEXT
+	updated_at TEXT DEFAULT (datetime('now', '-3 hours'))
 ) WITHOUT ROWID, STRICT;
 
 CREATE TABLE courses (
