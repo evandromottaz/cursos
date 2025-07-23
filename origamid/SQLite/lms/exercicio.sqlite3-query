@@ -1,0 +1,209 @@
+-- database: ./db.sqlite
+
+-- 1 Configurações
+
+PRAGMA foreign_keys = 1;
+
+PRAGMA journal_mode = WAL; -- Persiste
+PRAGMA synchronous = NORMAL;
+
+PRAGMA cache_size = 2000;
+PRAGMA busy_timeout = 5000;
+PRAGMA temp_store = memory;
+
+PRAGMA analysis_limit = 1000;
+PRAGMA optimize = 0x10002;
+
+-- 2 Criação de tabelas
+
+CREATE TABLE users (
+	id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))), 
+	nome TEXT NOT NULL, 
+	email TEXT NOT NULL UNIQUE COLLATE NOCASE, 
+	password TEXT NOT NULL,
+	created TEXT NOT NULL DEFAULT (datetime('now', '-3 hours')),
+	updated_at TEXT
+) WITHOUT ROWID, STRICT;
+
+CREATE TABLE courses (
+	id INTEGER PRIMARY KEY,
+	slug TEXT NOT NULL UNIQUE,
+	title TEXT NOT NULL,
+	aulas INTEGER NOT NULL,
+	horas INTEGER NOT NULL,
+	created TEXT NOT NULL DEFAULT (datetime('now', '-3 hours'))
+) STRICT;
+
+CREATE TABLE lessons (
+	id INTEGER PRIMARY KEY,
+	slug TEXT NOT NULL,
+	course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE ON UPDATE CASCADE,
+	title TEXT NOT NULL,
+	UNIQUE (slug, course_id)
+) STRICT;
+
+CREATE TABLE lessons_completed (
+	id INTEGER PRIMARY KEY,
+	user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
+	lesson_id INTEGER NOT NULL REFERENCES lessons(id) ON DELETE CASCADE,
+	completed TEXT NOT NULL DEFAULT (datetime('now', '-3 hours')),
+	UNIQUE(user_id, course_id, lesson_id)
+) STRICT;
+
+CREATE TABLE certificates (
+	id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+	user_id TEXT NOT NULL REFERENCES users (id) ON DELETE CASCADE,
+	course_id INTEGER NOT NULL REFERENCES courses (id) ON DELETE CASCADE,
+	completed TEXT NOT NULL DEFAULT (datetime('now', '-3 hours')),
+	UNIQUE(user_id, course_id)
+) WITHOUT ROWID, STRICT;
+
+CREATE TABLE sessions (
+	id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+	user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	created TEXT DEFAULT (datetime('now', '-3 hours')),
+	expires_at TEXT DEFAULT (datetime('now', '-3 hours', '+1 day'))
+) WITHOUT ROWID, STRICT;
+
+CREATE TABLE resets (
+	token TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+	user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	created TEXT DEFAULT (datetime('now', '-3 hours')),
+	expires_at TEXT DEFAULT (datetime('now', '-3 hours', '+1 hour'))
+) STRICT;
+
+-- 3 INSERT
+
+INSERT INTO users (nome, email, password) VALUES
+('Ana Silva', 'ana@email.com', 'senha123'),
+('Bruno Lima', 'bruno@email.com', 'senha123'),
+('Carlos Souza', 'carlos@email.com', 'senha123'),
+('Daniela Rocha', 'daniela@email.com', 'senha123'),
+('Eduardo Melo', 'eduardo@email.com', 'senha123'),
+('Fernanda Alves', 'fernanda@email.com', 'senha123'),
+('Gustavo Reis', 'gustavo@email.com', 'senha123'),
+('Helena Dias', 'helena@email.com', 'senha123'),
+('Igor Nunes', 'igor@email.com', 'senha123'),
+('Julia Castro', 'julia@email.com', 'senha123');
+
+INSERT INTO courses (slug, title, aulas, horas) VALUES
+('html-basico', 'HTML Básico', 4, 2),
+('css-fundamentos', 'CSS Fundamentos', 4, 3),
+('js-intro', 'JavaScript Introdução', 4, 4),
+('git-github', 'Git e GitHub', 4, 2),
+('react-basico', 'React Básico', 4, 5);
+
+
+INSERT INTO lessons (slug, course_id, title) VALUES
+('introducao-html', 1, 'Introdução ao HTML'),
+('tags-basicas', 1, 'Tags Básicas'),
+('listas-e-links', 1, 'Listas e Links'),
+('formulario-simples', 1, 'Formulário Simples'),
+
+('introducao-css', 2, 'Introdução ao CSS'),
+('cores-e-fontes', 2, 'Cores e Fontes'),
+('box-model', 2, 'Box Model'),
+('flexbox', 2, 'Flexbox'),
+
+('sintaxe-js', 3, 'Sintaxe JS'),
+('variaveis', 3, 'Variáveis'),
+('condicionais', 3, 'Condicionais'),
+('funcoes', 3, 'Funções'),
+
+('git-init', 4, 'Git Init'),
+('commits', 4, 'Commits'),
+('branching', 4, 'Branching'),
+('github', 4, 'Trabalhando com GitHub'),
+
+('jsx', 5, 'JSX'),
+('componentes', 5, 'Componentes'),
+('props-state', 5, 'Props e State'),
+('eventos', 5, 'Eventos');
+
+INSERT or IGNORE INTO lessons_completed (user_id, course_id, lesson_id)
+SELECT u.id, 1, 1 FROM users AS u WHERE u.email = 'bruno@email.com'
+UNION ALL
+SELECT u.id, 1, 2 FROM users AS u WHERE u.email = 'igor@email.com'
+UNION ALL
+SELECT u.id, 2, 5 FROM users AS u WHERE u.email = 'eduardo@email.com';
+
+INSERT INTO certificates (user_id, course_id)
+SELECT u.id, 1 FROM users AS u WHERE u.email = 'bruno@email.com'
+UNION ALL
+SELECT u.id, 2 FROM users AS u WHERE u.email = 'igor@email.com'
+UNION ALL
+SELECT u.id, 3 FROM users AS u WHERE u.email = 'eduardo@email.com';
+
+INSERT OR IGNORE INTO sessions (user_id) 
+SELECT u.id FROM users AS u WHERE u.email = 'bruno@email.com'
+UNION ALL
+SELECT u.id FROM users AS u WHERE u.email = 'igor@email.com'
+UNION ALL
+SELECT u.id FROM users AS u WHERE u.email = 'eduardo@email.com';
+
+INSERT OR IGNORE INTO resets (user_id) 
+SELECT u.id FROM users AS u WHERE u.email = 'bruno@email.com';
+
+-- 4 VIEW
+CREATE VIEW lessons_completed_info AS
+SELECT u.nome AS nome, u.email AS email, c.title AS course, l.title AS lesson 
+FROM lessons_completed AS lc
+INNER JOIN users AS u ON lc.user_id = u.id
+INNER JOIN lessons AS l ON lc.lesson_id = l.id
+INNER JOIN courses AS c ON lc.course_id = c.id;
+
+CREATE VIEW certificates_info AS
+SELECT u.nome AS nome, c.title AS course, cc.id AS certificate 
+FROM certificates AS cc
+INNER JOIN users AS u ON cc.user_id = u.id
+INNER JOIN courses AS c ON cc.course_id = c.id;
+
+CREATE VIEW view_users_lessons_completed AS
+SELECT u.email AS user_email, c.title AS course, (COUNT(lc.completed) || '/' || COUNT(l.id)) AS lessons_completed 
+FROM courses AS c
+LEFT JOIN lessons AS l ON l.course_id = c.id
+LEFT JOIN users AS u
+LEFT JOIN lessons_completed AS lc ON lc.lesson_id = l.id AND lc.user_id = u.id
+GROUP BY c.id, u.id;
+
+-- 5 SELECT
+
+SELECT * FROM sqlite_schema;
+
+SELECT * FROM users WHERE id = '3747728073800eec6fccd5f31ee0ed91';
+
+SELECT * FROM courses WHERE id = 1;
+
+SELECT c.id, u.nome 
+FROM certificates AS c
+INNER JOIN users AS u ON c.user_id = u.id
+WHERE email = 'bruno@email.com';
+
+SELECT * FROM view_users_lessons_completed WHERE user_email = 'du@email.com';
+
+-- 6 UPDATE
+
+UPDATE users SET email = 'edu@email.com' WHERE email = 'du@email.com';
+
+UPDATE sessions
+SET expires_at = datetime(expires_at, '-2 days')
+WHERE user_id = (SELECT id FROM users WHERE email = 'bruno@email.com');
+
+UPDATE users SET email = 'dani2025@email.com' WHERE email = 'dani@email.com';
+
+-- 7 TRIGGER
+
+CREATE TRIGGER trg_users_updated_at
+AFTER UPDATE ON users
+BEGIN
+	UPDATE users 
+	SET updated_at = datetime('now', '-3 hours')
+	WHERE id = OLD.id;
+END;
+
+-- 8 DELETE
+
+DELETE FROM users WHERE id = '33e435753f4514bbdb65f288047d2339';
+
+DELETE FROM sessions WHERE expires_at < datetime('now', '-3 hours');

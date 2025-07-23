@@ -1,0 +1,100 @@
+-- database: ./db.sqlite
+-- 1
+SELECT
+	lessons.lesson_order,
+	lessons.slug,
+	courses.title
+FROM
+	lessons
+	INNER JOIN courses ON courses.slug = 'html-para-iniciantes'
+ORDER BY
+	lessons.lesson_order;
+
+-- Sugestão professor
+SELECT * FROM lessons
+WHERE "course_id" = (SELECT "id" FROM courses WHERE "slug" = 'html-para-iniciantes')
+ORDER BY "lesson_order" ASC;
+
+-- 2
+SELECT
+	SUM(lessons.seconds)
+FROM
+	lessons
+	INNER JOIN courses ON courses.id = lessons.course_id
+WHERE
+	courses.slug = 'css-animacoes';
+
+-- 3
+SELECT
+	courses.title,
+	COUNT(lessons.course_id) AS total_lessons_by_course
+FROM
+	lessons
+	INNER JOIN courses ON courses.id = lessons.course_id
+GROUP BY
+	lessons.course_id;
+
+-- 4
+SELECT
+	courses.title,
+	SUM(lessons.seconds) AS total_lessons_seconds
+FROM
+	lessons
+	INNER JOIN courses ON courses.id = lessons.course_id
+GROUP BY
+	lessons.course_id
+ORDER BY
+	total_lessons_seconds DESC;
+
+-- 5
+SELECT
+	courses.title,
+	SUM(lessons.seconds) AS total_lessons_seconds
+FROM
+	lessons
+	INNER JOIN courses ON courses.id = lessons.course_id
+GROUP BY
+	lessons.course_id
+HAVING
+	total_lessons_seconds > 2300
+ORDER BY
+	total_lessons_seconds DESC;
+
+-- 7
+SELECT
+	c.id
+FROM
+	certificates AS c
+	INNER JOIN users AS u ON c.user_id = u.id
+WHERE
+	u.email = 'mariana@email.com';
+
+-- 8
+SELECT l.title, lc.completed
+FROM lessons AS l
+LEFT JOIN lessons_completed AS lc ON l.id = lc.lesson_id
+AND lc.user_id = (SELECT "id" FROM users WHERE "email" = 'lucas@email.com');
+
+-- 9
+SELECT * FROM lessons
+WHERE "course_id" = (SELECT "course_id" FROM lessons WHERE "slug" = 'funcoes-e-escopo')
+AND "lesson_order" IN (
+	(SELECT "lesson_order" FROM lessons WHERE "slug" = 'funcoes-e-escopo') - 1,
+	(SELECT "lesson_order" FROM lessons WHERE "slug" = 'funcoes-e-escopo'),
+	(SELECT "lesson_order" FROM lessons WHERE "slug" = 'funcoes-e-escopo') + 1
+)
+ORDER BY "lesson_order";
+
+-- Alternativa
+WITH "current" AS (
+	SELECT "course_id", "lesson_order"
+	FROM "lessons"
+	WHERE "slug" = 'funcoes-e-escopo'
+)
+SELECT * FROM lessons
+WHERE "course_id" = (SELECT "course_id" FROM "current")
+AND "lesson_order" IN (
+	(SELECT "course_id" FROM "current") - 1,
+	(SELECT "course_id" FROM "current"),
+	(SELECT "course_id" FROM "current") + 1
+)

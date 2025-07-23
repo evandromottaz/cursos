@@ -1,0 +1,124 @@
+-- database: c:\Users\evandro.zambini\Documents\debug\cursos\origamid\SQLite\normalizacao\db.sqlite
+CREATE TABLE
+	"users" (
+		"id" INTEGER PRIMARY KEY,
+		"name" TEXT NOT NULL,
+		"password" TEXT NOT NULL,
+		"email" TEXT NOT NULL UNIQUE COLLATE NOCASE,
+		"created" TEXT DEFAULT CURRENT_TIMESTAMP
+	) STRICT;
+
+INSERT INTO
+	"users" (name, password, email)
+VALUES
+	('joao', 'jhon', 'joao@gmail.com');
+
+CREATE TABLE
+	"courses" (
+		"id" INTEGER PRIMARY KEY,
+		"slug" TEXT NOT NULL UNIQUE COLLATE NOCASE,
+		"title" TEXT NOT NULL,
+		"description" TEXT NOT NULL,
+		"aulas" INTEGER NOT NULL,
+		"horas" INTEGER NOT NULL,
+		"created" TEXT DEFAULT CURRENT_TIMESTAMP
+	) STRICT;
+
+INSERT INTO
+	"courses" (slug, title, description, aulas, horas)
+VALUES
+	(
+		'html',
+		'Curso de HTML',
+		'Aprenda o básico sobre HTML',
+		10,
+		1
+	);
+
+CREATE TABLE
+	"lessons" (
+		"id" INTEGER PRIMARY KEY,
+		"course_id" INTEGER NOT NULL,
+		"slug" TEXT NOT NULL COLLATE NOCASE,
+		"title" TEXT NOT NULL,
+		"materia" TEXT NOT NULL,
+		"materia_slug" TEXT NOT NULL,
+		"seconds" INTEGER NOT NULL,
+		"video" TEXT NOT NULL,
+		"description" TEXT NOT NULL,
+		"lesson_order" INTEGER NOT NULL,
+		"free" INTEGER NOT NULL DEFAULT 1 CHECK ("free" IN (0, 1)),
+		"created" TEXT DEFAULT CURRENT_TIMESTAMP,
+		FOREIGN KEY ("course_id") REFERENCES "courses" ("id"),
+		UNIQUE ("slug", "course_id")
+	) STRICT;
+
+INSERT INTO
+	lessons (
+		"course_id",
+		"slug",
+		"title",
+		"materia",
+		"materia_slug",
+		"seconds",
+		"video",
+		"description",
+		"lesson_order",
+		"free"
+	)
+VALUES
+	(
+		1,
+		'html-semantico',
+		'HTML Semântico',
+		'Básico',
+		'basico',
+		400,
+		'html-semantico.mp4',
+		'Crie um HTML Semântico e eleve o SEO do seu site.',
+		1,
+		1
+	);
+
+CREATE TABLE
+	"lesson_completed" (
+		"lesson_id" INTEGER NOT NULL,
+		"user_id" INTEGER NOT NULL,
+		"course_id" INTEGER NOT NULL,
+		"completed" TEXT DEFAULT CURRENT_TIMESTAMP,
+		PRIMARY KEY ("user_id", "course_id", "lesson_id"),
+		FOREIGN KEY ("user_id") REFERENCES "users" ("id") ON DELETE CASCADE,
+		FOREIGN KEY ("course_id") REFERENCES "courses" ("id"),
+		FOREIGN KEY ("lesson_id") REFERENCES "lessons" ("id")
+	) STRICT;
+
+INSERT INTO
+	lesson_completed ("user_id", "course_id", "lesson_id")
+VALUES
+	(1, 1, 1);
+
+CREATE TABLE
+	"certificates" (
+		"id" TEXT PRIMARY KEY,
+		"user_id" INTEGER NOT NULL,
+		"course_id" INTEGER NOT NULL,
+		"completed" TEXT DEFAULT CURRENT_TIMESTAMP,
+		UNIQUE ("user_id", "course_id"),
+		FOREIGN KEY ("user_id") REFERENCES "users" ("id"),
+		FOREIGN KEY ("course_id") REFERENCES "courses" ("id")
+	) STRICT;
+
+INSERT INTO
+	certificates ("id", "user_id", "course_id")
+VALUES
+	('a2dffs', 1, 1);
+
+INSERT INTO
+	users ("id", "name", "password", "email")
+VALUES
+	(35, 'Evandro', 'senha232', 'evandro@email.com');
+
+INSERT INTO
+	certificates ("id", "user_id", "course_id")
+VALUES
+	('jsa2edgf', 35, 1);
